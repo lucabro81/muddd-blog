@@ -1,0 +1,23 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import TitleBar from '../components/TitleBar.astro';
+
+const { frontmatter } = Astro.props;
+---
+<BaseLayout title={frontmatter.title}>
+  <!-- This layout uses a specific stylesheet from WebTUI for its components -->
+  <link slot="head-css" rel="stylesheet" href="/node_modules/webtui/index.css" />
+
+  <article>
+    <TitleBar>{frontmatter.title}</TitleBar>
+    <div class="content-padding">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .content-padding {
+    padding: 1.5rem 0;
+  }
+</style>

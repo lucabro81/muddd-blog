@@ -1,0 +1,43 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const { title } = Astro.props;
+---
+<html lang="en" data-webtui-theme="catppuccin-mocha">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} | MUDDD Blog</title>
+		<slot name="head-css" />
+	</head>
+	<body>
+		<div is-="site-container">
+			<Header />
+  		<hr />
+			<main>
+				<slot />
+			</main>
+			<Footer />
+		</div>
+	</body>
+</html>
+
+<style>
+@layer base {
+	div[is-~="site-container"] {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		margin: 0 auto;
+		padding: 1rem;
+		gap: 1rem;
+	}
+	main {
+		flex-grow: 1;
+	}
+}
+</style> 

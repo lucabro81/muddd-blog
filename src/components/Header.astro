@@ -1,0 +1,42 @@
+---
+import Logo from './Logo.astro';
+---
+<header>
+	<div is-="header-content">
+		<div>
+			<Logo />
+			<h2 is-="header-sub-title"><a href="/">Vecchie mappe, nuove stelle – Cronache da una frontiera digitale</a></h2>
+		</div>
+		<form class="search-form">
+      <label box-="round" shear-="top">
+        <div class="row">
+           <span is-="badge" variant-="background0">Search</span>
+          </div>
+			<input type="search" aria-label="Search" />
+    </label>
+			<button type="submit">Search</button>
+		</form>
+	</div>
+</header>
+
+<style>
+	@layer base {
+		div[is-~="header-content"] {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		h2[is-~="header-sub-title"] {
+			margin-top: .5rem;
+		}
+	}
+	
+	h2 a {
+		text-decoration: none;
+		color: inherit;
+	}
+	.search-form {
+		display: flex;
+		gap: 0.5rem;
+	}
+</style> 

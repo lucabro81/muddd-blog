@@ -1,0 +1,26 @@
+@layer base, utils, components;
+
+@import "@webtui/css/base.css";
+
+/* Utils */
+@import "@webtui/css/utils/box.css";
+
+/* Components */
+@import "@webtui/css/components/input.css";
+@import "@webtui/css/components/badge.css";
+@import "@webtui/css/components/button.css";
+@import "@webtui/css/components/typography.css";
+@import "@webtui/plugin-nf";
+
+@import "@webtui/theme-catppuccin";
+@layer base {
+  :root {
+    --font-family: Menlo, Monaco, monospace, "Symbols Nerd Font";
+  }
+}
+
+@layer components {
+  input {
+    background-color: var(--background0);
+  }
+}

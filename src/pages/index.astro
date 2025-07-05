@@ -1,16 +1,72 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import type { MarkdownInstance } from 'astro';
 
+// Use Astro.glob() to fetch all posts, and sort them by date.
+const allPosts = (await Astro.glob<Record<string, any>>('./posts/*.md')).sort(
+	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Blog Index">
+	<div class="main-content">
+		<section class="posts-list">
+			<h2>All Posts</h2>
+			<ul>
+				{allPosts.map((post) => (
+					<li>
+						<h3><a href={post.url}>{post.frontmatter.title}</a></h3>
+						<time datetime={post.frontmatter.pubDate}>
+							{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
+								year: 'numeric',
+								month: 'long',
+								day: 'numeric',
+							})}
+						</time>
+						<p>{post.frontmatter.description}</p>
+					</li>
+				))}
+			</ul>
+		</section>
+		<Sidebar />
+	</div>
+</BaseLayout>
+
+<style>
+  .main-content {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 2rem;
+  }
+  .posts-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .posts-list li {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+  }
+  .posts-list h3 {
+    margin: 0 0 0.5rem 0;
+  }
+	.posts-list a {
+		text-decoration: none;
+		color: inherit;
+	}
+	.posts-list a:hover {
+		text-decoration: underline;
+	}
+  .posts-list time {
+		display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #888;
+  }
+  .posts-list p {
+    margin: 0;
+  }
+</style>
+
