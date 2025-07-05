@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Sidebar from '../components/Sidebar.astro';
-import type { MarkdownInstance } from 'astro';
 
 // Use Astro.glob() to fetch all posts, and sort them by date.
 const allPosts = (await Astro.glob<Record<string, any>>('./posts/*.md')).sort(
