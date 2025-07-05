@@ -1,6 +1,11 @@
-# Privacy Policy
+---
+layout: ../layouts/BlogPost.astro
+title: "Privacy Policy"
+description: "Privacy Policy for the MUDDD Blog newsletter"
+pubDate: "2025-07-05"
+---
 
-## Informativa Privacy per la Newsletter del blog MUDDD Blog
+## Informativa Privacy per la Newsletter del blog MUDDD
 
 Questa informativa è resa ai sensi dell'art. 13 del Regolamento UE 2016/679 (GDPR) a coloro che si iscrivono alla newsletter di questo blog.
 
@@ -39,3 +44,9 @@ Il conferimento dei dati è facoltativo. Il rifiuto a fornire l'indirizzo email 
 Questo sito non utilizza cookie di profilazione o di tracciamento. L'operatività del sito è garantita dall'uso di soli cookie tecnici strettamente necessari, che non richiedono il consenso preventivo dell'utente.
 
 _Ultimo aggiornamento: 5 luglio 2025_
+
+<style>
+  h2, h3 {
+    margin: 1rem 0 0.5rem 0;
+  }
+</style>
