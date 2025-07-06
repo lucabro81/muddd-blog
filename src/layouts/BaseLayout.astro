@@ -3,6 +3,9 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import HorizontalMenu from '../components/HorizontalMenu.astro';
+import MobileMenu from '../components/MobileMenu.astro';
+import Hamburger from '../components/Hamburger.astro';
+import SearchForm from '../components/SearchForm.astro';
 
 const { title } = Astro.props;
 ---
@@ -17,7 +20,13 @@ const { title } = Astro.props;
 	</head>
 	<body>
 		<div is-="site-container">
+
+			<div class="header-container-mobile">
+				<Hamburger />
+				<SearchForm />
+			</div>
 			<Header />
+			<MobileMenu />
 			<HorizontalMenu />
 			<main>
 				<slot />
@@ -26,6 +35,19 @@ const { title } = Astro.props;
 		</div>
 	</body>
 </html>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('is-open');
+      });
+    }
+  });
+</script>
 
 <style>
 @layer base {
@@ -41,7 +63,21 @@ const { title } = Astro.props;
 		flex-grow: 1;
 		padding: 1rem 0;
 	}
+
+
+
+	.header-container-mobile {
+			display: none;
+		}
 	
+}
+
+@media (max-width: 768px) {
+	.header-container-mobile {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 }
 
 </style> 

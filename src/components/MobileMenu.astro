@@ -1,0 +1,77 @@
+<div id="mobile-menu" class="mobile-menu">
+  <button class="close-button">
+    <span>Close</span>
+  </button>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/il-progetto">Il Progetto</a></li>
+      <li><a href="/ai-disclaimer">AI Disclaimer</a></li>
+    </ul>
+  </nav>
+  <div class="footer-links">
+    <a href="/privacy-policy">Privacy Policy</a>
+    <a href="#">Powered by webTUI</a>
+    <a href="#">GitHub Repository</a>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const closeButton = document.querySelector('.close-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (closeButton && mobileMenu) {
+      closeButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('is-open');
+      });
+    }
+  });
+</script>
+
+<style>
+  .mobile-menu {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    background-color: var(--background-color, #fff); /* Use CSS variables */
+    padding: 2rem;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+  }
+
+  .mobile-menu.is-open {
+    display: block; /* Show when active */
+  }
+
+  .mobile-menu nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mobile-menu nav ul li {
+    margin-bottom: 1.5rem;
+  }
+
+  .mobile-menu nav ul li a {
+    text-decoration: none;
+    color: var(--text-color, #000);
+    font-size: 1.2rem;
+  }
+
+  .footer-links {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer-links a {
+    text-decoration: none;
+    color: var(--text-color, #000);
+  }
+</style> 

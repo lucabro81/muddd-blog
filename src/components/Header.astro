@@ -1,21 +1,17 @@
 ---
 import Logo from './Logo.astro';
+import Hamburger from './Hamburger.astro';
+import SearchForm from './SearchForm.astro';
 ---
 <header>
 	<div is-="header-content">
-		<div>
+		<div class="header-main">
 			<Logo />
-			<h2 is-="header-sub-title"><a href="/">Vecchie mappe, nuove stelle – Cronache da una frontiera digitale</a></h2>
+			<h2 is-="header-sub-title"><a href="/">Vecchie mappe, nuove stelle - Cronache da una frontiera digitale</a></h2>
 		</div>
-		<form class="search-form">
-      <label box-="round" shear-="top">
-        <div class="row">
-           <span is-="badge" variant-="background0">Search</span>
-          </div>
-			<input type="search" aria-label="Search" />
-    </label>
-			<button type="submit">Search</button>
-		</form>
+		<div class="search-form-container">
+			<SearchForm />
+		</div>
 	</div>
 </header>
 
@@ -25,9 +21,22 @@ import Logo from './Logo.astro';
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			flex-wrap: wrap; /* Allow wrapping for mobile */
+		}
+		.header-main {
+			flex-grow: 1;
+		}
+		.header-actions {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
 		}
 		h2[is-~="header-sub-title"] {
 			margin-top: .5rem;
+			font-size: 1rem; /* Adjust base font size */
+		}
+		.search-form-container {
+			display: block;
 		}
 	}
 	
@@ -38,5 +47,31 @@ import Logo from './Logo.astro';
 	.search-form {
 		display: flex;
 		gap: 0.5rem;
+	}
+
+	/* Mobile Styles */
+	@media (max-width: 768px) {
+		div[is-~="header-content"] {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.header-main {
+			width: 100%;
+		}
+
+		.header-actions {
+			width: 100%;
+			margin-top: 1rem;
+			justify-content: space-between;
+		}
+
+		.search-form {
+			flex-grow: 1; /* Make search form take available space */
+		}
+
+		.search-form-container {
+			display: none;
+		}
 	}
 </style> 
