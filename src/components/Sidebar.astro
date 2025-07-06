@@ -1,7 +1,6 @@
 <aside>
   <h3>About Me</h3>
-  <p>Just a developer writing about tech. Welcome to my corner of the internet!</p>
-  <hr />
+  <p>Solo un dev che dovrebbe riflettere di più sulle proprie discutibili scelte di vita.</p>
   <h3>Categories</h3>
   <ul>
     <li>Astro</li>
@@ -9,3 +8,13 @@
     <li>General</li>
   </ul>
 </aside> 
+<style>
+  @layer base {
+    aside h3 {
+      margin-bottom: 0.5rem;
+    }
+    aside h3:not(:first-child) {
+      margin-top: 1rem;
+    }
+  }
+</style>

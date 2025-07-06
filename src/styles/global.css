@@ -9,6 +9,7 @@
 @import "@webtui/css/components/input.css";
 @import "@webtui/css/components/badge.css";
 @import "@webtui/css/components/button.css";
+@import "@webtui/css/components/separator.css";
 @import "@webtui/css/components/typography.css";
 @import "@webtui/plugin-nf";
 
@@ -22,10 +23,36 @@
   a:visited {
     color: var(--sky);
   }
+
+  div[is-~="post-container"] > pre {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  div[is-~="page-container"] p:not(:first-of-type),
+  div[is-~="post-container"] p:not(:first-of-type) {
+    margin-top: 1rem;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  li {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    padding-left: 0.5rem;
+  }
 }
 
 @layer components {
   input {
     background-color: var(--background0);
+  }
+
+  div[is-~="horizontal-menu"] {
+    margin-top: 0.5rem;
   }
 }

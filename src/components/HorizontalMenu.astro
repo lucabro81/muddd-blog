@@ -1,0 +1,50 @@
+<div is-="horizontal-menu">
+  <hr />
+  <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a href="/il-progetto">Il Progetto</a>
+    </li>
+    <li is-="right-end">
+      <ul>
+        <li>
+          <a href="/ai-disclaimer">AI Disclaimer</a>
+        </li>
+      </ul>
+    </li>
+
+  </ul>
+  <hr />
+</div>
+
+<style>
+  @layer base {
+    div[is-~="horizontal-menu"] ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 1rem;
+      padding: 0.125rem 0;
+    }
+    div[is-~="horizontal-menu"] ul li {
+      gap: 0;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  @layer components {
+    ul li:before {
+      content: "/";
+      margin-right: 0;
+    }
+    ul li[is-~="right-end"]:before {
+      content: "";
+      margin: 0;
+    }
+    li[is-~="right-end"] {
+      margin-left: auto;
+    }
+  }
+</style>

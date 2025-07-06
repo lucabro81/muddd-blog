@@ -5,9 +5,6 @@ import TitleBar from '../components/TitleBar.astro';
 const { frontmatter } = Astro.props;
 ---
 <BaseLayout title={frontmatter.title}>
-  <!-- This layout uses a specific stylesheet from WebTUI for its components -->
-  <link slot="head-css" rel="stylesheet" href="/node_modules/webtui/index.css" />
-
   <article>
     <TitleBar>{frontmatter.title}</TitleBar>
     <div is-="post-container">
@@ -19,8 +16,12 @@ const { frontmatter } = Astro.props;
 <style>
   @layer base {
     div[is-~="post-container"] {
-      padding: 1.5rem 0;
+      padding: 1rem 0;
     }
 
+    h1 {
+      margin: 1rem 0 0.5rem 0;
+    }
+    
   }
 </style>

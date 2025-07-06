@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/BlogPost.astro
 title: "Appunti dalla frontiera - Un nuovo inizio"
-description: "placeholder"
+description: "Il cursore lampeggiante, il comando di movimento, e la descrizione del mondo che ti circonda formarsi una parola alla volta, decretando il tuo destino..."
 pubDate: "2025-07-05"
 ---
 
@@ -103,7 +103,6 @@ Il mio approccio, tuttavia, si differenzia per tre aspetti fondamentali. <strong
 
 <li><p>Sebbene questo progetto permetta anche una narrazione esclusivamente single player, non è il suo scopo principale. L'interazione tra giocatori deve esserci, e l'llm è un motore che la può facilitare.</p></li>
 </ul>
-<br><br>
 
 Oltre a questo, sono certo esistano altri progetti che hanno seguito questo stesso percorso; non li elencheremo ora, ma potrebbero essere oggetto di altri post e di altre analisi. Comunque questo progetto si ispira a questi tentativi e cerca di applicare questa logica a tutto il tessuto del mondo di gioco e di chi lo abita.
 <br><br>
@@ -161,25 +160,5 @@ A Presto.
     background: var(--peach);
     top: 50%;
     content: "";
-  }
-
-  div[is-~="post-container"] > pre {
-    padding: 1rem;
-    margin: 1rem 0;
-  }
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  li {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    padding-left: 0.5rem;
-  }
-  li:before {
-    content: "-";
-    display: block;
   }
 </style>
