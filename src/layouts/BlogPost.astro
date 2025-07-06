@@ -10,14 +10,17 @@ const { frontmatter } = Astro.props;
 
   <article>
     <TitleBar>{frontmatter.title}</TitleBar>
-    <div class="content-padding">
+    <div is-="post-container">
       <slot />
     </div>
   </article>
 </BaseLayout>
 
 <style>
-  .content-padding {
-    padding: 1.5rem 0;
+  @layer base {
+    div[is-~="post-container"] {
+      padding: 1.5rem 0;
+    }
+
   }
 </style>

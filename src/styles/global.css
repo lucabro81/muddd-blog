@@ -17,6 +17,11 @@
   :root {
     --font-family: Menlo, Monaco, monospace, "Symbols Nerd Font";
   }
+
+  a,
+  a:visited {
+    color: var(--sky);
+  }
 }
 
 @layer components {

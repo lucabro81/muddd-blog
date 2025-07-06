@@ -11,7 +11,7 @@ Questa informativa è resa ai sensi dell'art. 13 del Regolamento UE 2016/679 (GD
 
 ### Titolare del Trattamento
 
-Il Titolare del trattamento dei dati raccolti è Luca Brognara, contattabile all'indirizzo email: luca.brognara81@gmail.it.
+Il Titolare del trattamento dei dati raccolti è Luca Brognara, contattabile all'indirizzo email: privacy@muddd.blog.
 
 ### Finalità e Base Giuridica del Trattamento
 
