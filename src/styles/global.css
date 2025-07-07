@@ -55,4 +55,8 @@
   div[is-~="horizontal-menu"] {
     margin-top: 0.5rem;
   }
+  .title-lined {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
 }

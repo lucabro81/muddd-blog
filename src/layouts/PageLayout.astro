@@ -1,0 +1,14 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import TitleBar from '../components/TitleBar.astro';
+
+const { title } = Astro.props;
+---
+<BaseLayout title={title}>
+  <article>
+    <TitleBar>{title}</TitleBar>
+    <div is-="page-container">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

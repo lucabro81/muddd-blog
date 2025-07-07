@@ -1,0 +1,19 @@
+---
+const { pathname } = Astro.url;
+const { href } = Astro.props;
+---
+<a href={href} class:list={[{active: pathname === href}]}><slot /></a>
+
+<style>
+  @layer components {
+    a {
+      text-decoration: underline;
+      color: var(--sky);
+    }
+
+    a.active {
+      text-decoration: none;
+      pointer-events: none;
+    }
+  }
+</style>

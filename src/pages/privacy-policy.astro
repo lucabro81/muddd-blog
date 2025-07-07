@@ -1,23 +1,29 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
+import TitleLined from '../components/TitleLined.astro';
 ---
 
-<BaseLayout title="Privacy Policy">
-  <h1>Informativa Privacy per la Newsletter del blog MUDDD</h1>
+<PageLayout title="Privacy Policy">
 
   <p>Questa informativa è resa ai sensi dell'art. 13 del Regolamento UE 2016/679 (GDPR) a coloro che si iscrivono alla newsletter di questo blog.</p>
 
-  <h3>Titolare del Trattamento</h3>
+  <TitleLined class="title-lined">
+    <h2>Titolare del Trattamento</h2>
+  </TitleLined>
 
   <p>Il Titolare del trattamento dei dati raccolti è Luca Brognara, contattabile all'indirizzo email: <a id="privacy-policy-email"></a>.</p>
 
-  <h3>Finalità e Base Giuridica del Trattamento</h3>
+  <TitleLined class="title-lined">
+    <h2>Finalità e Base Giuridica del Trattamento</h2>
+  </TitleLined>
 
   <p>L'indirizzo email fornito dall'utente al momento dell'iscrizione viene utilizzato con l'esclusivo scopo di inviare una notifica via email alla pubblicazione di un nuovo articolo sul blog.</p>
 
   <p>La base giuridica che legittima questo trattamento è il consenso esplicito dell'interessato, fornito tramite la selezione dell'apposita casella al momento dell'iscrizione (Art. 6, par. 1, lett. a del GDPR).</p>
 
-  <h3>Modalità del Trattamento e Destinatari dei Dati</h3>
+  <TitleLined class="title-lined">
+    <h2>Modalità del Trattamento e Destinatari dei Dati</h2>
+  </TitleLined>
 
   <p></p>I dati sono trattati esclusivamente tramite strumenti informatici. Per la gestione e l'invio della newsletter, questo blog si avvale del servizio fornito da **Buttondown, LLC**, che agisce in qualità di Responsabile del Trattamento.</p>
 
@@ -25,24 +31,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <p>Al di fuori di tale fornitore, i dati non saranno comunicati a terzi.</p>
 
-  <h3>Periodo di Conservazione</h3>
+  <TitleLined class="title-lined">
+    <h2>Periodo di Conservazione</h2>
+  </TitleLined>
 
   <p>I dati raccolti (indirizzo email) saranno conservati fino a quando l'utente non deciderà di disiscriversi dal servizio. La revoca del consenso può essere effettuata in qualsiasi momento tramite il link di cancellazione ("Unsubscribe") presente in calce a ogni email ricevuta.</p>
 
-  <h3>Diritti dell'Interessato</h3>
+  <TitleLined class="title-lined">
+    <h2>Diritti dell'Interessato</h2>
+  </TitleLined>
 
   <p>L'utente ha il diritto di chiedere al Titolare del trattamento l'accesso ai propri dati personali, la rettifica, la cancellazione degli stessi, la limitazione del trattamento o di opporsi al loro trattamento, oltre al diritto alla portabilità dei dati. Tali richieste possono essere inviate all'indirizzo email del Titolare.</p>
 
-  <h3>Natura del Conferimento</h3>
+  <TitleLined class="title-lined">
+    <h2>Natura del Conferimento</h2>
+  </TitleLined>
 
   <p>Il conferimento dei dati è facoltativo. Il rifiuto a fornire l'indirizzo email comporta l'impossibilità di ricevere gli aggiornamenti dal blog.</p>
 
-  <h3>Cookies</h3>
+  <TitleLined class="title-lined">
+    <h2>Cookies</h2>
+  </TitleLined>
 
   <p>Questo sito non utilizza cookie di profilazione o di tracciamento. L'operatività del sito è garantita dall'uso di soli cookie tecnici strettamente necessari, che non richiedono il consenso preventivo dell'utente.</p>
 
   <p><em>Ultimo aggiornamento: 5 luglio 2025</em></p>
-</BaseLayout>
+</PageLayout>
 
 <script>
   const user = 'privacy';
@@ -51,12 +65,3 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   emailContainer.href = `mailto:${user}@${domain}`;
   emailContainer.textContent = `${user}@${domain}`;
 </script>
-
-<style>
-  @layer base {
-  h1,
-  h3 {
-    margin: 1rem 0 0.5rem 0;
-  }
-}
-</style>

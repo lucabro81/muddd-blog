@@ -1,16 +1,24 @@
+---
+import PageLink from "./PageLink.astro";
+const { pathname } = Astro.url;
+---
+
 <div is-="horizontal-menu">
   <hr />
   <ul>
     <li>
-      <a href="/">Home</a>
+      <PageLink href="/">Home</PageLink>
     </li>
     <li>
-      <a href="/il-progetto">Il Progetto</a>
+      <PageLink href="/il-progetto">Il Progetto</PageLink>
+    </li>
+    <li>
+      <PageLink href="/milestones">Milestones</PageLink>
     </li>
     <li is-="right-end">
       <ul>
         <li>
-          <a href="/ai-disclaimer">AI Disclaimer</a>
+          <PageLink href="/ai-disclaimer">AI Disclaimer</PageLink>
         </li>
       </ul>
     </li>

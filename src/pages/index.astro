@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Sidebar from '../components/Sidebar.astro';
+import TitleBar from '../components/TitleBar.astro';
 
-const allPosts = (await Astro.glob<Record<string, any>>('./posts/*.md')).sort(
+const allPosts = (await Astro.glob<Record<string, any>>('./posts/*.mdx')).sort(
 	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
 );
 ---
@@ -10,7 +11,7 @@ const allPosts = (await Astro.glob<Record<string, any>>('./posts/*.md')).sort(
 <BaseLayout title="Home">
 	<div class="main-content">
 		<section class="posts-list">
-			<h2>Ultimi posts</h2>
+			<TitleBar>Ultimi posts</TitleBar>
 			<ul>
 				{allPosts.slice(0, 5).map((post) => (
 					<li>
@@ -22,7 +23,7 @@ const allPosts = (await Astro.glob<Record<string, any>>('./posts/*.md')).sort(
 									day: 'numeric',
 								})}
 							</time>
-							<h3><a href={post.url}>{post.frontmatter.title}</a></h3>
+							<h2><a href={post.url}>{post.frontmatter.title}</a></h2>
 							<em>{post.frontmatter.description}</em>
 						</div>
 					</li>
@@ -82,8 +83,7 @@ const allPosts = (await Astro.glob<Record<string, any>>('./posts/*.md')).sort(
   .posts-list time {
 		display: block;
     margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    color: #888;
+    color: var(--foreground2);
   }
   .posts-list p {
     margin: 0;

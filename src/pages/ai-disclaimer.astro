@@ -1,47 +1,35 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 import TitleLined from '../components/TitleLined.astro';
 ---
-<BaseLayout title="AI Disclaimer">
-  <div class="page-container">
-  <h1>AI Disclaimer</h1>
-  
+<PageLayout title="AI Disclaimer">
   <p>
     In un'ottica di totale trasparenza con i miei lettori, desidero chiarire il ruolo che l'intelligenza artificiale gioca nella creazione dei contenuti di questo blog. Considero l'AI un potente strumento di supporto che accelera e migliora il mio processo creativo e analitico, ma non sostituisce mai il mio ruolo di autore e responsabile.
   </p>
   <p>
   Nella stesura di questi contenuti, i ruoli sono così divisi:
   </p>
-  <TitleLined class="title-lined"><h3>Umano:</h3></TitleLined>
+  <h2>Umano:</h2>
   <ul>
-    <li>Ideazione e Concetto: L'idea originale, l'ipotesi da verificare e gli obiettivi dell'articolo sono frutto esclusivo della mia esperienza e ricerca.</li>
-    <li>Supervisione e Controllo: Ogni singola riga di testo, frammento di codice o diagramma generato o suggerito dall'AI viene attentamente revisionato, validato e, se necessario, corretto da me.</li>
-    <li>Responsabilità e Testing: Sono l'unico responsabile della veridicità delle informazioni, della correttezza del codice e dell'efficacia delle soluzioni proposte. Ogni esempio tecnico è stato testato personalmente.</li>
+    <li><div><strong>Ideazione e Concetto:</strong> L'idea originale, l'ipotesi da verificare e gli obiettivi dell'articolo sono frutto esclusivo della mia esperienza e ricerca.</div></li>
+    <li><div><strong>Supervisione e Controllo:</strong> Ogni singola riga di testo, frammento di codice o diagramma generato o suggerito dall'AI viene attentamente revisionato, validato e, se necessario, corretto da me.</div></li>
+    <li><div><strong>Responsabilità e Testing:</strong> Sono l'unico responsabile della veridicità delle informazioni, della correttezza del codice e dell'efficacia delle soluzioni proposte. Ogni esempio tecnico è stato testato personalmente.</div></li>
   </ul>
-  <TitleLined class="title-lined"><h3>AI:</h3></TitleLined>
+  <h2>AI:</h2>
   <ul>
-    <li>Partner di Brainstorming: Utilizzo l'AI per esplorare diverse angolazioni di un argomento e per organizzare le idee in una scaletta coerente.</li>
-    <li>Assistente alla Scrittura: L'AI mi aiuta a migliorare la forma, la fluidità del testo e a correggere errori grammaticali o di sintassi.</li>
-    <li>Facilitatore di Idee: A volte, una discussione con l'AI può far emergere spunti che non avevo considerato, che poi sviluppo in modo autonomo.</li>
+    <li><div><strong>Partner di Brainstorming:</strong> Utilizzo l'AI per esplorare diverse angolazioni di un argomento e per organizzare le idee in una scaletta coerente.</div></li>
+    <li><div><strong>Assistente alla Scrittura:</strong> L'AI mi aiuta a migliorare la forma, la fluidità del testo e a correggere errori grammaticali o di sintassi.</div></li>
+    <li><div><strong>Facilitatore di Idee:</strong> A volte, una discussione con l'AI può far emergere spunti che non avevo considerato, che poi sviluppo in modo autonomo.</div></li>
   </ul>
   <p>
     Questa sinergia tra intelligenza umana e artificiale mi permette di produrre contenuti di (spero) alta qualità in modo più efficiente, 
     garantendo sempre l'autenticità e il necessario rigore tecnico.
   </p>
-  </div>
-</BaseLayout>
+</PageLayout>
 
 <style>
-  @layer base {
-    h1 {
-      margin: 1rem 0 0.5rem 0;
-    }
-  }
-  .page-container :global(.title-lined) {
-    margin-bottom: 0.5rem;
-  }
-
-  .page-container :global(.title-lined):not(:first-child) {
-    margin-top: 1rem;
+  h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
   }
 </style>
