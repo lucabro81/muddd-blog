@@ -18,4 +18,18 @@
     top: 50%;
     content: "";
   }
+  .post-container hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  ul.index-list {
+    list-style: none;
+  }
+  ul.index-list li {
+    margin-bottom: 0.5rem;
+  }
+  .table-of-contents {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
 }

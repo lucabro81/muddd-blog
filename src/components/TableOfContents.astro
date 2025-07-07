@@ -1,0 +1,24 @@
+---
+import TitleLined from './TitleLined.astro';
+const { class: className, title } = Astro.props;
+---
+
+<div class:list={['table-of-contents', className]}>
+  <div class="table-of-contents__header">
+    <TitleLined class="table-of-contents__header-title">
+      <h2 id="indice">{title || 'Indice'}</h2>
+    </TitleLined>
+  </div>
+  <slot />
+  <hr>
+</div>
+
+
+<style>
+  .table-of-contents hr {
+    margin-top: 2rem;
+  }
+  .table-of-contents__header :global(.table-of-contents__header-title) {
+    margin-bottom: 2rem;
+  }
+</style>
