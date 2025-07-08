@@ -13,13 +13,36 @@
   a {
     text-decoration: none;
   }
+  @property --rotate {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+  
   .logo {
     width: fit-content;
+    animation: rotate-gradient 30s linear infinite;
     line-height: 1rem;
-    background: linear-gradient(45deg, rgb(18, 194, 233), rgb(196, 113, 237), rgb(246, 79, 89));
+    background: conic-gradient(
+      from var(--rotate), 
+      rgb(18, 194, 233), 
+      rgb(196, 113, 237), 
+      rgb(246, 79, 89),
+      rgb(18, 194, 233)
+    );
+    background-size: 200% 300%;
+    background-position: 50% 100%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+  @keyframes rotate-gradient {
+    from {
+      --rotate: 0deg;
+    }
+    to {
+      --rotate: 360deg;
+    }
   }
   @media (max-width: 768px) {
     .logo {
