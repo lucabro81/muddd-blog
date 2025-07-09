@@ -1,6 +1,5 @@
 ---
 import Logo from './Logo.astro';
-import Hamburger from './Hamburger.astro';
 import SearchForm from './SearchForm.astro';
 ---
 <header>
@@ -36,7 +35,9 @@ import SearchForm from './SearchForm.astro';
 			font-size: 1rem; /* Adjust base font size */
 		}
 		.search-form-container {
-			display: block;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
 		}
 	}
 	

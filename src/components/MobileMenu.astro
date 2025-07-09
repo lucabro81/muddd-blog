@@ -1,4 +1,4 @@
-<div id="mobile-menu" class="mobile-menu">
+<div class="mobile-menu">
   <button class="close-button">
     <span>Close</span>
   </button>
@@ -19,11 +19,11 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const closeButton = document.querySelector('.close-button');
-    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenu = document.querySelector('.mobile-menu-container');
 
     if (closeButton && mobileMenu) {
       closeButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('is-open');
+        mobileMenu.children[0].classList.toggle('is-open');
       });
     }
   });

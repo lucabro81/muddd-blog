@@ -1,23 +1,62 @@
-<div class="header-actions">
-  <form class="search-form">
-    <label box-="round" shear-="top">
+---
+import IconSearch from './icons/IconSearch.astro';
+---
+<div class="header-actions display-flex align-items-center">
+  <form class="header-actions__search-form display-flex">
+    <label class="search-form__label" box-="round" shear-="top">
       <div class="row">
-         <span is-="badge" variant-="background0">Search</span>
-        </div>
-    <input type="search" aria-label="Search" />
-  </label>
+        <span is-="badge" variant-="background0">Search</span>
+      </div>
+      <div class="label__input-container display-flex align-items-center">
+        <IconSearch />
+        <input class="input-container__input-field" type="search" aria-label="Search" />
+      </div>
+    </label>
     <button type="submit">Search</button>
   </form>
 </div>
 
 <style>
-  .header-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  @layer base {
+    .display-flex {
+      display: flex;
+    }
+
+    .align-items-center {
+      align-items: center;
+    }
+
+    .header-actions {
+      gap: 1rem;
+    }
+    
+    .header-actions__search-form {
+      gap: 0.5rem;
+    }
+
+    .search-form__label {
+      max-width: 230px;
+    }
+
+    .label__input-container {
+      padding-left: 10px;
+    }
+
   }
-  .search-form {
-		display: flex;
-		gap: 0.5rem;
-	}
+
+  @layer components {
+    .input-container__input-field {
+      min-width: 150px
+    }
+    
+    .input-container__input-field::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+      background-color: var(--foreground0);
+      -webkit-mask-image: var(--svg-icon-close-url);
+      background-size: 16px 16px;
+      height: 16px;
+      width: 16px;
+    }
+  }
+
 </style>

@@ -3,15 +3,27 @@ const { class: className } = Astro.props;
 ---
 
 <h1 class:list={['title-bar', className]}>
-    <slot />
+    <span class="title-bar-text"><slot /></span>
 </h1>
 
 <style>
   @layer components {
     .title-bar {
-        margin-top: 2rem;
+        margin-top: 1.25rem;
         margin-bottom: 2rem;
         font-size: 2rem;
+
+        span {
+          background: linear-gradient(
+      30deg, 
+      rgb(18, 194, 233), 
+      rgb(196, 113, 237), 
+      rgb(246, 79, 89)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+        }
     }
   }
 </style>

@@ -1,11 +1,11 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import '../styles/global.css';
 import HorizontalMenu from '../components/HorizontalMenu.astro';
 import MobileMenu from '../components/MobileMenu.astro';
-import Hamburger from '../components/Hamburger.astro';
 import SearchForm from '../components/SearchForm.astro';
+import IconMenu from '../components/icons/IconMenu.astro';
+import '../styles/global.css';
 
 const { title } = Astro.props;
 ---
@@ -22,11 +22,13 @@ const { title } = Astro.props;
 		<div is-="site-container">
 
 			<div class="header-container-mobile">
-				<Hamburger />
+				<div class="header-container-mobile__hamburger"><IconMenu /></div>
 				<SearchForm />
 			</div>
 			<Header />
-			<MobileMenu />
+			<div class="mobile-menu-container">
+				<MobileMenu />
+			</div>
 			<HorizontalMenu />
 			<main>
 				<slot />
@@ -38,12 +40,12 @@ const { title } = Astro.props;
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.querySelector('.hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburger = document.querySelector('.header-container-mobile__hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu-container');
 
     if (hamburger && mobileMenu) {
       hamburger.addEventListener('click', () => {
-        mobileMenu.classList.toggle('is-open');
+        mobileMenu.children[0].classList.toggle('is-open');
       });
     }
   });

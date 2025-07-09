@@ -22,6 +22,9 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
+  ul {
+    margin-top: 0.5rem;
+  }
   ul.index-list {
     list-style: none;
   }
