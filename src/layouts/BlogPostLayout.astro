@@ -13,7 +13,7 @@ const { frontmatter } = Astro.props;
         day: 'numeric',
       })}
     </time>
-    <TitleBar class="margin-top-1-75">{frontmatter.title}</TitleBar>
+    <TitleBar class="no-margin-top">{frontmatter.title}</TitleBar>
     <div is-="post-container">
       <slot />
     </div>
@@ -23,10 +23,10 @@ const { frontmatter } = Astro.props;
 <style>
   time {
     display: block;
-    margin-top: 0.25rem;
+    margin-top: 0;
     color: var(--foreground2);
   }
-  :global(.margin-top-1-75) {
-    margin-top: 0.75rem;
+  :global(.no-margin-top) {
+    margin-top: 0;
   }
 </style>
