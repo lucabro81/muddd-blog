@@ -1,0 +1,19 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import TitleLined from '../components/TitleLined.astro';
+import IconGithub from '../components/icons/IconGithub.astro';
+import IconLinkedin from '../components/icons/IconLinkedin.astro';
+---
+<PageLayout title="Chi sono">
+
+  <p>
+    Solo un dev che dovrebbe riflettere di più sulle proprie discutibili scelte di vita.
+  </p>
+  <TitleLined class="title-lined">
+    <h2>Contatti</h2>
+  </TitleLined>
+  <p>
+    <a class="social-links__item" href="https://github.com/lucabro81" target="_blank" aria-label="GitHub"><IconGithub /></a>
+    <a class="social-links__item" href="https://www.linkedin.com/in/lucabrognara/" target="_blank" aria-label="LinkedIn"><IconLinkedin /></a>
+  </p>
+</PageLayout>

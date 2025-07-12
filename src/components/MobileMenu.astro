@@ -29,7 +29,7 @@ const mostRecentPostDate = (await Astro.glob<Record<string, any>>('../pages/post
     <ul class="mobile-menu__links-list">
       <li class="links-list__item"><PageLink href="/">Home</PageLink></li>
       <li class="links-list__item"><PageLink href="/il-progetto">Il Progetto</PageLink></li>
-      <li class="links-list__item"><PageLink href="/#">About Me</PageLink></li>
+      <li class="links-list__item"><PageLink href="/about-me">About Me</PageLink></li>
       <li class="links-list__item links-list__item-category" data-category-count={allCategories.length}>
         <div class="links-list__item-title">
           <span class="links-list__item-title-icon">/</span><PageLink href="/#">Categorie</PageLink>
