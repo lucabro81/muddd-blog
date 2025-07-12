@@ -4,21 +4,11 @@ import IconGithub from "./icons/IconGithub.astro";
 import IconLinkedin from "./icons/IconLinkedin.astro";
 import PageLink from "./PageLink.astro";
 import { version } from "../../package.json";
+import { getAllCategories, getMostRecentPostDate } from "../utils";
 
-const rowCategories = (await Astro.glob<Record<string, any>>('../pages/posts/*.mdx'))
-  .map((category) => category.frontmatter.category);
-const flattenedCategories = rowCategories.reduce((acc, category) => {
-    if (Array.isArray(category)) {
-      return [...acc, ...category];
-    }
-    return [...acc, category];
-  }, []);
-const allCategories = Array.from(new Set(flattenedCategories.sort()));
-
-const mostRecentPostDate = (await Astro.glob<Record<string, any>>('../pages/posts/*.mdx'))
-  .map((post) => post.frontmatter.pubDate)
-  .sort((a, b) => new Date(b).valueOf() - new Date(a).valueOf())[0]
-  .replaceAll('-', '');
+const posts = Object.values(import.meta.glob<Record<string, any>>('../pages/posts/*.mdx'))
+const allCategories = await getAllCategories(posts as (() => Promise<Record<string, any>>)[]);
+const mostRecentPostDate = await getMostRecentPostDate(posts as (() => Promise<Record<string, any>>)[]);
 ---
 
 <div class="mobile-menu">
