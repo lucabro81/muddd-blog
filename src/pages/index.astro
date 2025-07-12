@@ -30,8 +30,10 @@ const allPosts = (await Astro.glob<Record<string, any>>('./posts/*.mdx')).sort(
 				))}
 			</ul>
 		</section>
-		<div is-="separator" direction-="vertical"></div>
-		<Sidebar />
+		<div is-="separator" direction-="vertical" class="separator-vertical"></div>
+		<span class="sidebar-container">
+			<Sidebar />
+		</span>
 	</div>
 </BaseLayout>
 
@@ -88,5 +90,19 @@ const allPosts = (await Astro.glob<Record<string, any>>('./posts/*.mdx')).sort(
   .posts-list p {
     margin: 0;
   }
+
+	@media (max-width: 768px) {
+
+		.main-content {
+			grid-template-columns: 1fr;
+			gap: 0;
+  }
+		div[is-~="separator"] {
+			display: none;
+		}
+		.sidebar-container {
+			display: none;
+		}
+	}
 </style>
 
