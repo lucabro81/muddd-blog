@@ -4,6 +4,21 @@ import IconGithub from "./icons/IconGithub.astro";
 import IconLinkedin from "./icons/IconLinkedin.astro";
 import PageLink from "./PageLink.astro";
 import { version } from "../../package.json";
+
+const rowCategories = (await Astro.glob<Record<string, any>>('../pages/posts/*.mdx'))
+  .map((category) => category.frontmatter.category);
+const flattenedCategories = rowCategories.reduce((acc, category) => {
+    if (Array.isArray(category)) {
+      return [...acc, ...category];
+    }
+    return [...acc, category];
+  }, []);
+const allCategories = Array.from(new Set(flattenedCategories.sort()));
+
+const mostRecentPostDate = (await Astro.glob<Record<string, any>>('../pages/posts/*.mdx'))
+  .map((post) => post.frontmatter.pubDate)
+  .sort((a, b) => new Date(b).valueOf() - new Date(a).valueOf())[0]
+  .replaceAll('-', '');
 ---
 
 <div class="mobile-menu">
@@ -12,16 +27,27 @@ import { version } from "../../package.json";
   </button>
   <nav class="mobile-menu__nav">
     <ul class="mobile-menu__links-list">
-      <li class="links-list__item"><PageLink href="/">/Home</PageLink></li>
-      <li class="links-list__item"><PageLink href="/il-progetto">/Il Progetto</PageLink></li>
-      <li class="links-list__item"><PageLink href="/ai-disclaimer">/AI Disclaimer</PageLink></li>
+      <li class="links-list__item"><PageLink href="/">Home</PageLink></li>
+      <li class="links-list__item"><PageLink href="/il-progetto">Il Progetto</PageLink></li>
+      <li class="links-list__item"><PageLink href="/#">About Me</PageLink></li>
+      <li class="links-list__item links-list__item-category" data-category-count={allCategories.length}>
+        <div class="links-list__item-title">
+          <span class="links-list__item-title-icon">/</span><PageLink href="/#">Categorie</PageLink>
+        </div>
+        <ul class="links-list__sub-list">
+          {allCategories.map((category) => (
+            <li class="links-list__item sub-list__item"><PageLink href=`/posts/category/${category}`>{category}</PageLink></li>
+          ))}
+        </ul>
+      </li>
+      <li class="links-list__item"><PageLink href="/ai-disclaimer">AI Disclaimer</PageLink></li>
     </ul>
   </nav>
   <div class="mobile-menu__separator"></div>
   <nav class="mobile-menu__nav">
     <ul class="mobile-menu__links-list">
-      <li class="links-list__item"><a href="/privacy-policy">Privacy Policy</a></li>
-      <li class="links-list__item"><a href="#">Powered by webTUI</a></li>
+      <li class="links-list__item links-list__item--remove-before"><a href="/privacy-policy">Privacy Policy</a></li>
+      <li class="links-list__item links-list__item--remove-before">Powered by&nbsp;<a href="https://webtui.ironclad.sh" target="_blank">WebTUI</a></li>
     </ul>
   </nav>
   <div class="mobile-menu__footer">
@@ -34,21 +60,62 @@ import { version } from "../../package.json";
       </a>
     </div>
     <div class="footer__theme-toggle">
-      <a href=`https://github.com/lucabro81/webTUI/releases/tag/v${version}` target="_blank">v{version}</a>
+      <a href=`https://github.com/lucabro81/webTUI/releases/tag/v${version}` target="_blank">v{version}.{mostRecentPostDate}</a>
     </div>
   </div>
 </div>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const closeButton = document.querySelector('.mobile-menu__close-button');
-    const mobileMenu = document.querySelector('.mobile-menu-container');
 
-    if (closeButton && mobileMenu) {
-      closeButton.addEventListener('click', () => {
-        mobileMenu.children[0].classList.toggle('is-open');
-      });
+    const OPENING_TIME = 300;
+    const OPENING_DELAY = 0.1;
+
+    const mobileMenu = document.querySelector('.mobile-menu-container');
+    const closeButton = document.querySelector('.mobile-menu__close-button');
+    const categoryLink = document.querySelector('.links-list__item-category');
+    const categoryIcon = document.querySelector('.links-list__item-category .links-list__item-title-icon');
+    const categorySubList = document.querySelector('.links-list__item-category .links-list__sub-list');
+    const categorySubListItems = document.querySelectorAll('.links-list__item-category .links-list__sub-list .sub-list__item');
+    let isCategoryMenuOpen = false;
+
+    function closeMenu() {
+      mobileMenu?.children[0].classList.toggle('is-open');
+      categoryIcon?.classList.remove('links-list__item-title-icon--is-open');
     }
+
+    function resetSubItemEnteringAnimation(item: Element) {
+      const currentItem:HTMLElement = item as HTMLElement;
+      currentItem.classList.toggle('appear');
+      currentItem.classList.toggle('slide-in');
+      currentItem.style.transitionDelay = `0s`;
+    }
+
+    function applySubItemEnteringAnimation(item: Element, index: number) {
+      const currentItem:HTMLElement = item as HTMLElement;
+      currentItem.style.transitionDelay = `${index * OPENING_DELAY}s`;
+      currentItem.classList.toggle('appear');
+      currentItem.classList.toggle('slide-in');
+    }
+
+    function openCategoryMenu() {
+      isCategoryMenuOpen = !isCategoryMenuOpen;
+      categoryIcon?.classList.toggle('links-list__item-title-icon--is-open');
+      categorySubList?.classList.toggle('links-list__sub-list--is-open');
+      const height = isCategoryMenuOpen ? `${(parseInt((categoryLink as HTMLElement).dataset.categoryCount || '0')*2)+1}rem` : '0';
+      if (!isCategoryMenuOpen) {
+        setTimeout(() => {
+          categorySubListItems.forEach(resetSubItemEnteringAnimation);
+        }, OPENING_TIME);
+      }
+      else {
+        categorySubListItems.forEach(applySubItemEnteringAnimation);
+      }
+      (categorySubList as HTMLElement).style.setProperty('height', height);
+    }
+
+    closeButton?.addEventListener('click', closeMenu);
+    categoryLink?.addEventListener('click', openCategoryMenu);
   });
 </script>
 
@@ -71,7 +138,7 @@ import { version } from "../../package.json";
       background-color: transparent;
       background-image: none;
       width: fit-content;
-      margin: -1rem;
+      margin: 0 -1rem -1rem -1rem;
       color: var(--foreground0);
       padding: 0 1rem; 
     }
@@ -116,11 +183,73 @@ import { version } from "../../package.json";
   }
 
   .links-list__item {
+    .sub-list__item {
+      opacity: 0;
+      padding-left: 3rem;
+      &.appear, &.slide-in {
+        transition: opacity .4s ease-in-out, padding-left .4s ease-in-out;
+      }
+      &.appear {
+        opacity: 1;
+      }
+      &.slide-in {
+        padding-left: 0;
+      }
+    }
+    .sub-list__item:first-child {
+      padding-top: 1rem;
+    }
     gap: 0;
     padding-left: 0;
   }
+
+  .links-list__sub-list {
+    list-style: none;
+    flex-direction: column;
+    gap: 1rem;
+    height: 0;
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+    &.links-list__sub-list--is-open {
+      /* height: 7rem; */
+      transition: all .3s ease-in-out;
+    }
+    .sub-list__item {
+    }
+  }
+
   .links-list__item::before {
-    content: "";
+    content: "/";
+  }
+
+  .links-list__item-category{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .links-list__item.links-list__item-category::before {
+    display: none;
+  }
+
+  .links-list__item-title {
+    text-align: left;
+  }
+
+  .links-list__item-title-icon {
+    display: inline-block;
+    rotate: 0deg;
+    transition: all .3s ease-in-out;
+  }
+
+  .links-list__item-title-icon--is-open {
+    transition: all .3s ease-in-out;
+    transform: rotate(130deg);
+  }
+
+  .links-list__item--remove-before {
+    &::before {
+      content: "";
+    }
   }
 
   .mobile-menu__separator {
