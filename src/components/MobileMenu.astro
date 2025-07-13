@@ -5,10 +5,13 @@ import IconLinkedin from "./icons/IconLinkedin.astro";
 import PageLink from "./PageLink.astro";
 import { version } from "../../package.json";
 import { getAllCategories, getMostRecentPostDate } from "../utils";
+import { getCollection } from "astro:content";
 
-const posts = Object.values(import.meta.glob<Record<string, any>>('../pages/**/posts/*.mdx'))
-const allCategories = await getAllCategories(posts as (() => Promise<Record<string, any>>)[]);
-const mostRecentPostDate = await getMostRecentPostDate(posts as (() => Promise<Record<string, any>>)[]);
+const posts = await getCollection('blog', ({ id }) => {
+  return id.startsWith('it/');
+})
+const allCategories = await getAllCategories(posts);
+const mostRecentPostDate = await getMostRecentPostDate(posts);
 ---
 
 <div class="mobile-menu">
@@ -62,6 +65,7 @@ const mostRecentPostDate = await getMostRecentPostDate(posts as (() => Promise<R
 
     const OPENING_TIME = 300;
     const OPENING_DELAY = 0.1;
+    const SIX_MONTHS_IN_SECONDS = 6 * 30 * 24 * 60 * 60;
 
     const mobileMenu = document.querySelector('.mobile-menu-container');
     const closeButton = document.querySelector('.mobile-menu__close-button');
@@ -77,7 +81,7 @@ const mostRecentPostDate = await getMostRecentPostDate(posts as (() => Promise<R
     function setLangCookie(lang: string) {
       const hasConsent = document.cookie.split(';').some((item) => item.trim().startsWith('cookie_consent=true'));
       if (hasConsent) {
-        document.cookie = `lang=${lang};path=/;max-age=31536000`;
+        document.cookie = `lang=${lang};path=/;max-age=${SIX_MONTHS_IN_SECONDS}`;
       }
     }
 

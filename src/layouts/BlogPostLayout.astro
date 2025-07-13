@@ -2,19 +2,19 @@
 import BaseLayout from './BaseLayout.astro';
 import TitleBar from '../components/TitleBar.astro';
 
-const { frontmatter } = Astro.props;
+const data = Astro.props;
 ---
-<BaseLayout title={frontmatter.title}>
+<BaseLayout title={data.title}>
   <article>
-    <time datetime={frontmatter.pubDate}>
-      {new Date(frontmatter.pubDate).toLocaleDateString('en-us', {
+    <time datetime={data.pubDate}>
+      {new Date(data.pubDate).toLocaleDateString('en-us', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
       })}
     </time>
-    <TitleBar class="no-margin-top">{frontmatter.title}</TitleBar>
-    <div is-="post-container">
+    <TitleBar class="no-margin-top">{data.title}</TitleBar>
+    <div is-="post-container">  
       <slot />
     </div>
   </article>

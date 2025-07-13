@@ -1,8 +1,10 @@
 ---
 import HomeLayout from '../../layouts/HomeLayout.astro';
+import { getCollection } from 'astro:content';
 
-const allPosts = (await Astro.glob<Record<string, any>>('./posts/*.mdx'))
-	.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
+const allPosts = (await getCollection('blog', ({ data }) => {
+	return data.lang === 'en';
+})).sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf());
 ---
 
 <HomeLayout allPosts={allPosts} />
