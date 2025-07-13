@@ -3,9 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Sidebar from '../components/Sidebar.astro';
 import TitleBar from '../components/TitleBar.astro';
 
-const allPosts = (await Astro.glob<Record<string, any>>('./posts/*.mdx')).sort(
-	(a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
-);
+const allPosts = (await Astro.glob<Record<string, any>>('./*/posts/*.mdx'))
+	.filter(post => post.frontmatter.lang === 'en')
+	.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
 ---
 
 <BaseLayout title="Home">

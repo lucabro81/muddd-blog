@@ -3,9 +3,14 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import HorizontalMenu from '../components/HorizontalMenu.astro';
 import MobileMenu from '../components/MobileMenu.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 import SearchForm from '../components/SearchForm.astro';
 import IconMenu from '../components/icons/IconMenu.astro';
 import '../styles/global.css';
+
+interface Props {
+	title: string;
+}
 
 const { title } = Astro.props;
 ---
@@ -35,6 +40,7 @@ const { title } = Astro.props;
 			</main>
 			<Footer />
 		</div>
+		<CookieBanner />
 	</body>
 </html>
 
@@ -51,7 +57,7 @@ const { title } = Astro.props;
   });
 </script>
 
-<style>
+<style is:global>
 @layer base {
 	div[is-~="site-container"] {
 		display: flex;

@@ -1,0 +1,12 @@
+{
+  "sidebar": {
+    "about_me": "About Me",
+    "bio": "A placeholder bio for the english version.",
+    "categories": "Categories"
+  },
+  "header": {
+    "home": "Home",
+    "about": "About Me",
+    "project": "The Project"
+  }
+}

@@ -1,0 +1,92 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import TitleLined from '../../components/TitleLined.astro';
+---
+
+<PageLayout title="Privacy Policy">
+
+  <p>Questa informativa è resa ai sensi dell'art. 13 del Regolamento UE 2016/679 (GDPR) a coloro che si iscrivono alla newsletter di questo blog.</p>
+
+  <TitleLined class="title-lined">
+    <h2>Titolare del Trattamento</h2>
+  </TitleLined>
+
+  <p>Il Titolare del trattamento dei dati raccolti è Luca Brognara, contattabile all'indirizzo email: <a id="privacy-policy-email"></a>.</p>
+
+  <TitleLined class="title-lined">
+    <h2>Finalità e Base Giuridica del Trattamento</h2>
+  </TitleLined>
+
+  <p>L'indirizzo email fornito dall'utente al momento dell'iscrizione viene utilizzato con l'esclusivo scopo di inviare una notifica via email alla pubblicazione di un nuovo articolo sul blog.</p>
+
+  <p>La base giuridica che legittima questo trattamento è il consenso esplicito dell'interessato, fornito tramite la selezione dell'apposita casella al momento dell'iscrizione (Art. 6, par. 1, lett. a del GDPR).</p>
+
+  <TitleLined class="title-lined">
+    <h2>Modalità del Trattamento e Destinatari dei Dati</h2>
+  </TitleLined>
+
+  <p></p>I dati sono trattati esclusivamente tramite strumenti informatici. Per la gestione e l'invio della newsletter, questo blog si avvale del servizio fornito da **Buttondown, LLC**, che agisce in qualità di Responsabile del Trattamento.</p>
+
+  <p>Buttondown ha sede negli Stati Uniti e il trasferimento dei dati è legittimato dalle garanzie offerte dalla loro adesione al **Data Privacy Framework (DPF) UE-USA**, un meccanismo che assicura un livello di protezione dei dati personali adeguato a quello richiesto dalla normativa europea. Per maggiori dettagli, si prega di consultare la privacy policy di Buttondown al seguente link: [https://buttondown.com/legal/privacy](https://buttondown.com/legal/privacy).</p>
+
+  <p>Al di fuori di tale fornitore, i dati non saranno comunicati a terzi.</p>
+
+  <TitleLined class="title-lined">
+    <h2>Periodo di Conservazione</h2>
+  </TitleLined>
+
+  <p>I dati raccolti (indirizzo email) saranno conservati fino a quando l'utente non deciderà di disiscriversi dal servizio. La revoca del consenso può essere effettuata in qualsiasi momento tramite il link di cancellazione ("Unsubscribe") presente in calce a ogni email ricevuta.</p>
+
+  <TitleLined class="title-lined">
+    <h2>Diritti dell'Interessato</h2>
+  </TitleLined>
+
+  <p>L'utente ha il diritto di chiedere al Titolare del trattamento l'accesso ai propri dati personali, la rettifica, la cancellazione degli stessi, la limitazione del trattamento o di opporsi al loro trattamento, oltre al diritto alla portabilità dei dati. Tali richieste possono essere inviate all'indirizzo email del Titolare.</p>
+
+  <TitleLined class="title-lined">
+    <h2>Natura del Conferimento</h2>
+  </TitleLined>
+
+  <p>Il conferimento dei dati è facoltativo. Il rifiuto a fornire l'indirizzo email comporta l'impossibilità di ricevere gli aggiornamenti dal blog.</p>
+
+  <TitleLined class="title-lined">
+    <h2>Cookie Policy</h2>
+  </TitleLined>
+
+  <p>This Cookie Policy explains what cookies are and how they are used on this site.</p>
+
+  <h3>What are cookies?</h3>
+
+  <p>Cookies are small text files that websites visited by users send to their terminals (usually to the browser), where they are stored to be then re-sent to the same sites on the next visit by the same user.</p>
+
+  <h3>Cookies used by this site</h3>
+
+  <p>This site uses both technical cookies, which do not require consent, and functional cookies, which are installed only with your consent.</p>
+
+  <h3>Cookie utilizzati da questo sito</h3>
+
+  <p>
+    Questo sito utilizza sia cookie tecnici, che non richiedono consenso, sia cookie di funzionalità, che vengono installati solo previo tuo consenso.
+  </p>
+
+| Nome Cookie | Fornitore (Host) | Finalità | Durata | Tipo |
+| :--- | :--- | :--- | :--- | :--- |
+| `cookie_consent` | [tuodominio.com] | Memorizza lo stato del consenso ai cookie da parte dell'utente. | 6 mesi | Tecnico |
+| `lang` | [tuodominio.com] | Memorizza la preferenza della lingua selezionata dall'utente per le visite successive. | 1 anno | Funzionale |
+
+  <h3>Come gestire le preferenze sui cookie</h3>
+
+  <p>Al tuo primo accesso al sito, ti viene mostrato un banner tramite il quale puoi scegliere se accettare o rifiutare l'installazione dei cookie di funzionalità. Puoi modificare la tua scelta in qualsiasi momento.</p>
+
+  <p>Inoltre, puoi gestire le preferenze relative ai cookie direttamente all'interno del tuo browser per impedire che terze parti possano installarne. Tramite le preferenze del browser è inoltre possibile eliminare i cookie installati in passato, incluso il cookie in cui venga eventualmente salvato il consenso all'installazione di cookie da parte di questo sito.</p>
+
+  <p><em>Ultimo aggiornamento: 5 luglio 2025</em></p>
+</PageLayout>
+
+<script>
+  const user = 'privacy';
+  const domain = 'muddd.blog';
+  const emailContainer = document.getElementById('privacy-policy-email') as HTMLAnchorElement;
+  emailContainer.href = `mailto:${user}@${domain}`;
+  emailContainer.textContent = `${user}@${domain}`;
+</script>

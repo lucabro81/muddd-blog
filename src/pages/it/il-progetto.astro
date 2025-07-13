@@ -1,0 +1,73 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import TitleLined from '../../components/TitleLined.astro';
+---
+<PageLayout title="Il Progetto">
+  <p>
+    <em>Questo è il diario di bordo di un esperimento: <strong>MUDDD.</strong></em>
+  </p>
+  <p>
+    <em>Qui troverete appunti, riflessioni, scoperte e sfide tecniche nel tentativo di unire due mondi apparentemente distanti: 
+      i giochi di ruolo testuali e quello delle intelligenze artificiali generative.</em>
+  </p>
+  <TitleLined class="title-lined">
+    <h2>Cos'è un MUD?</h2>
+  </TitleLined>
+  <p>
+    Immagina di leggere il tuo libro (non deve essere per forza un'opera fantasy o fantascientifica, ma deve essere una <strong>storia</strong>). Ora immagina di poter entrare in quel libro, di camminare per le sue strade, di parlare con i suoi personaggi e di vivere le tue avventure insieme ad altri lettori da tutto il mondo, tutto attraverso comandi testuali.<br><br>
+    Questo, in essenza, è un <strong>MUD (Multi-User Dungeon).</strong><br><br>
+    Nato negli anni '70, è l'antenato di tutti i moderni MMORPG (come World of Warcraft). È un mondo virtuale persistente, online, a cui si accede e si interagisce tramite interfaccia testuale. 
+    Non c'è grafica; il mondo è descritto da parole e scoperto dalle tue azioni quando vengono eseguite digitando comandi come "guarda la stanza", "vai a nord" o "attacca il drago". L'unica GPU richiesta è la tua immaginazione.
+  </p>
+  <TitleLined class="title-lined">
+    <h2>Cos'è MUDDD?</h2>
+  </TitleLined>
+  <p>
+    <strong>MUDDD (Multi User Data Driven Dungeon)</strong> parte da questa stessa premessa, ma si pone una domanda: cosa succede se il mondo non è più un libro statico, ma un narratore intelligente?
+  </p>
+  <p>
+    In un MUD tradizionale, la descrizione di una stanza è fissa, scritta a mano dal creatore. Se la stanza viene descritta come "silenziosa e in ordine", 
+    rimarrà sempre così, anche se un istante prima dieci giocatori hanno combattuto una battaglia epica al suo interno. 
+  </p>
+  <p>
+    Certo possono sempre esserci sistemi che cercano di rendere l'esperienza più dinamica, ma non possono prescindere da un certa stretta discretizzazione, 
+    e da un lavoro di previsione di tutte le possibili varianti.
+  </p>
+  <p>
+    È fattibile certo, ma è un lavoro lungo e complesso, e cosa succede se nelle meccaniche di gioco possono esistere dinamiche 
+    che provocano eventi non previsti? Come per esempio qualche complesso sistema di crafting, o la necessità gestire un companion 
+    credibile e che muti il suo comportamento in base agli eventi esterni. Le cose si complicano e tocca rimediare cercando 
+    la soluzione che più si avvicina alla necessità, spesso più che sufficiente a garantire una grande esperienza di gioco. 
+    Ma se questa potesse diventare <strong>unica?</strong>
+  </p>
+  <p>
+    <strong>MUDDD</strong> è un esperimento che cerca di rompere questa barriera. 
+    Utilizza un <strong>Narratore IA</strong> (un LLM addestrato e vincolato a regole precise) 
+    per generare le descrizioni del mondo in tempo reale, basandosi su ciò che accade: è appena passato un temporale? 
+    Il terreno verrà descritto come fangoso, e le statistiche del personaggio o la sua condizione influenzeranno la descrizione.
+    Una gilda ha costruito una torre di guardia? La sua presenza verrà menzionata nelle descrizioni dei luoghi vicini, 
+    correttamente fusa nella prosa adatta a quel momento e a quel personaggio.
+    Hai subito una sconfitta? Il tuo equipaggiamento potrebbe essere descritto come ammaccato e rovinato e tu ferito in modo realistico.
+    Boo potrebbe parlarti davvero... ;)
+  </p>
+  <p>
+    L'obiettivo non è sostituire le meccaniche di gioco classiche, ma avvolgerle in un tessuto narrativo dinamico, coerente e vivo, che reagisce alle azioni collettive di chi lo abita.
+  </p>
+  <TitleLined class="title-lined">
+    <h2>Perché Questo Viaggio?</h2>
+  </TitleLined>
+  <p>
+    Perché la parola scritta ha un potere unico: quello di creare universi interi nella nostra mente. Crediamo che unendo la solida struttura dei vecchi MUD con la flessibilità delle nuove IA, si possa creare un'esperienza di gioco di ruolo più profonda, personale e immersiva di qualsiasi grafica.
+  </p>
+  <p>
+    Questo progetto è un omaggio a quell'era di esplorazione digitale e una scommessa sul futuro della narrazione interattiva. È un esperimento spinto dalla domanda: <strong>"Perché no?"</strong>.
+  </p>
+  <TitleLined class="title-lined">
+    <h2>Da Dove Iniziare</h2>
+  </TitleLined>
+  <p>
+    Il modo migliore per capire la filosofia e la visione dietro a questo progetto è leggere il primo capitolo del nostro diario di bordo. È il punto di partenza perfetto per questo viaggio.<br><br>
+    Leggi il nostro primo post: <a href="/posts/post-zero" class="button">"Appunti dalla Frontiera - Un nuovo inizio"</a><br><br>
+    Ci vediamo di là!
+  </p>
+</PageLayout>

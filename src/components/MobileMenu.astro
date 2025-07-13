@@ -6,7 +6,7 @@ import PageLink from "./PageLink.astro";
 import { version } from "../../package.json";
 import { getAllCategories, getMostRecentPostDate } from "../utils";
 
-const posts = Object.values(import.meta.glob<Record<string, any>>('../pages/posts/*.mdx'))
+const posts = Object.values(import.meta.glob<Record<string, any>>('../pages/**/posts/*.mdx'))
 const allCategories = await getAllCategories(posts as (() => Promise<Record<string, any>>)[]);
 const mostRecentPostDate = await getMostRecentPostDate(posts as (() => Promise<Record<string, any>>)[]);
 ---
@@ -34,6 +34,8 @@ const mostRecentPostDate = await getMostRecentPostDate(posts as (() => Promise<R
     </ul>
   </nav>
   <div class="mobile-menu__separator"></div>
+  <a href="/" id="lang-it">Italiano</a>
+  <a href="/en" id="lang-en">English</a>
   <nav class="mobile-menu__nav">
     <ul class="mobile-menu__links-list">
       <li class="links-list__item links-list__item--remove-before"><a href="/privacy-policy">Privacy Policy</a></li>
@@ -68,6 +70,22 @@ const mostRecentPostDate = await getMostRecentPostDate(posts as (() => Promise<R
     const categorySubList = document.querySelector('.links-list__item-category .links-list__sub-list');
     const categorySubListItems = document.querySelectorAll('.links-list__item-category .links-list__sub-list .sub-list__item');
     let isCategoryMenuOpen = false;
+    
+    const langIt = document.getElementById('lang-it');
+    const langEn = document.getElementById('lang-en');
+
+    function setLangCookie(lang: string) {
+      const hasConsent = document.cookie.split(';').some((item) => item.trim().startsWith('cookie_consent=true'));
+      if (hasConsent) {
+        document.cookie = `lang=${lang};path=/;max-age=31536000`;
+      }
+    }
+
+    function manageLanguageSelection(e: Event, lang: string) {
+      e.preventDefault();
+      setLangCookie(lang);
+      window.location.href = lang === 'it' ? '/' : `/${lang}`;
+    }
 
     function closeMenu() {
       mobileMenu?.children[0].classList.toggle('is-open');
@@ -106,6 +124,9 @@ const mostRecentPostDate = await getMostRecentPostDate(posts as (() => Promise<R
 
     closeButton?.addEventListener('click', closeMenu);
     categoryLink?.addEventListener('click', openCategoryMenu);
+
+    langIt?.addEventListener('click', (e) => manageLanguageSelection(e, 'it'));
+    langEn?.addEventListener('click', (e) => manageLanguageSelection(e, 'en'));
   });
 </script>
 

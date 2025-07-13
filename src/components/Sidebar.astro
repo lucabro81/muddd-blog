@@ -2,7 +2,7 @@
 import { getAllCategories } from "../utils";
 import PageLink from "./PageLink.astro";
 
-const posts = Object.values(import.meta.glob<Record<string, any>>('../pages/posts/*.mdx'))
+const posts = Object.values(import.meta.glob<Record<string, any>>('../pages/**/posts/*.mdx'))
 const allCategories = await getAllCategories(posts as (() => Promise<Record<string, any>>)[]);
 ---
 <aside>
