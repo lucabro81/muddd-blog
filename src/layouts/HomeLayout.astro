@@ -1,0 +1,111 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import TitleBar from '../components/TitleBar.astro';
+
+interface Props {
+	allPosts: any[];
+}
+
+const { allPosts } = Astro.props;
+console.log("allPosts", allPosts);
+---
+
+<BaseLayout title="Home">
+	<div class="main-content">
+		<section class="posts-list">
+			<TitleBar>Ultimi posts</TitleBar>
+			<ul>
+				{allPosts.slice(0, 5).map((post) => (
+					<li>
+						<div>
+							<time datetime={post.frontmatter.pubDate}>
+								{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
+									year: 'numeric',
+									month: 'long',
+									day: 'numeric',
+								})}
+							</time>
+							<h2><a href={post.url}>{post.frontmatter.title}</a></h2>
+							<em>{post.frontmatter.description}</em>
+						</div>
+					</li>
+				))}
+			</ul>
+		</section>
+		<div is-="separator" direction-="vertical" class="separator-vertical"></div>
+		<span class="sidebar-container">
+			<Sidebar />
+		</span>
+	</div>
+</BaseLayout>
+
+<style>
+  .main-content {
+    display: grid;
+    grid-template-columns: 3fr min-content 1fr;
+    gap: 0.5rem;
+  }
+	.posts-list h2 {
+		margin-top: 0.5rem;
+		margin-bottom: 1rem;
+	}
+  .posts-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+		gap:0
+  }
+  .posts-list li {
+    padding-bottom: 1rem;
+		padding-left: 0;
+		gap: 0;
+  }
+
+	.posts-list li:not(:first-child) {
+    padding-top: 1rem;
+	}
+
+	.posts-list li:not(:last-child) {
+		border-bottom: 1px solid #eee;
+	}
+
+	.posts-list li:before {
+		content: "";
+    padding-left: 0;
+	}
+	
+  .posts-list h3 {
+    margin: 0 0 0.5rem 0;
+  }
+	.posts-list a {
+		text-decoration: none;
+		color: inherit;
+	}
+	.posts-list a:hover {
+		text-decoration: underline;
+	}
+  .posts-list time {
+		display: block;
+    margin-bottom: 0.5rem;
+    color: var(--foreground2);
+  }
+  .posts-list p {
+    margin: 0;
+  }
+
+	@media (max-width: 768px) {
+
+		.main-content {
+			grid-template-columns: 1fr;
+			gap: 0;
+  }
+		div[is-~="separator"] {
+			display: none;
+		}
+		.sidebar-container {
+			display: none;
+		}
+	}
+</style>
+
