@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
+import netlify from "@astrojs/netlify";
 
 import mdx from "@astrojs/mdx";
 
@@ -13,4 +14,5 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  adapter: netlify(),
 });
