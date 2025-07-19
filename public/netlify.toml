@@ -1,0 +1,5 @@
+[[edge_functions]]
+  path = "/*"
+  
+  # name of the function in netlify/edge_functions
+  function = "language-redirect"

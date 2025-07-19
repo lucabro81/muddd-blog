@@ -1,0 +1,22 @@
+# Blocca i bot di scraping più comuni usati per l'addestramento di LLM
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+# Consenti ai bot di ricerca standard
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
