@@ -1,24 +1,26 @@
 ---
 import PageLink from "./PageLink.astro";
-const { pathname } = Astro.url;
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const { currentLocale } = Astro;
 ---
 
 <div is-="horizontal-menu">
   <hr />
   <ul>
     <li>
-      <PageLink href="/">Home</PageLink>
+      <PageLink href={getRelativeLocaleUrl(currentLocale ?? 'it', "")}>Home</PageLink>
     </li>
     <li>
-      <PageLink href="/il-progetto">Il Progetto</PageLink>
+      <PageLink href={getRelativeLocaleUrl(currentLocale ?? 'it', 'il-progetto')}>Il Progetto</PageLink>
     </li>
     <li>
-      <PageLink href="/milestones">Milestones</PageLink>
+      <PageLink href={getRelativeLocaleUrl(currentLocale ?? 'it', 'milestones')}>Milestones</PageLink>
     </li>
     <li is-="right-end">
       <ul>
         <li>
-          <PageLink href="/ai-disclaimer">AI Disclaimer</PageLink>
+          <PageLink href={getRelativeLocaleUrl(currentLocale ?? 'it', 'ai-disclaimer')}>AI Disclaimer</PageLink>
         </li>
       </ul>
     </li>

@@ -2,12 +2,26 @@
 import BaseLayout from './BaseLayout.astro';
 import Sidebar from '../components/Sidebar.astro';
 import TitleBar from '../components/TitleBar.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
+interface PostData {
+    pubDate: string;
+    title: string;
+    description: string;
+    category: string[];
+    lang: string;
+}
 interface Props {
-	allPosts: any[];
+	allPosts: {data: PostData, slug: string}[];
 }
 
 const { allPosts } = Astro.props;
+
+const getPostUrl = (post: any) => {
+	const lang = post.data.lang;
+	const slug = post.slug.split('/')[1];
+	return `/${lang === 'it' ? '' : `${lang}/`}posts\/${slug}`;
+}
 ---
 
 <BaseLayout title="Home">
@@ -25,7 +39,7 @@ const { allPosts } = Astro.props;
 									day: 'numeric',
 								})}
 							</time>
-							<h2><a href={`/posts/${post.slug}`}>{post.data.title}</a></h2>
+							<h2><a href={getPostUrl(post)}>{post.data.title}</a></h2>
 							<em>{post.data.description}</em>
 						</div>
 					</li>

@@ -6,6 +6,8 @@ import PageLink from "./PageLink.astro";
 import { version } from "../../package.json";
 import { getAllCategories, getMostRecentPostDate } from "../utils";
 import { getCollection } from "astro:content";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+import FlexSpacer from "./FlexSpacer.astro";
 
 const posts = await getCollection('blog', ({ id }) => {
   return id.startsWith('it/');
@@ -36,9 +38,8 @@ const mostRecentPostDate = await getMostRecentPostDate(posts);
       <li class="links-list__item"><PageLink href="/ai-disclaimer">AI Disclaimer</PageLink></li>
     </ul>
   </nav>
-  <div class="mobile-menu__separator"></div>
-  <a href="/" id="lang-it">Italiano</a>
-  <a href="/en" id="lang-en">English</a>
+  <FlexSpacer />
+  <LanguageSwitcher align="right" />
   <nav class="mobile-menu__nav">
     <ul class="mobile-menu__links-list">
       <li class="links-list__item links-list__item--remove-before"><a href="/privacy-policy">Privacy Policy</a></li>
@@ -65,7 +66,6 @@ const mostRecentPostDate = await getMostRecentPostDate(posts);
 
     const OPENING_TIME = 300;
     const OPENING_DELAY = 0.1;
-    const SIX_MONTHS_IN_SECONDS = 6 * 30 * 24 * 60 * 60;
 
     const mobileMenu = document.querySelector('.mobile-menu-container');
     const closeButton = document.querySelector('.mobile-menu__close-button');
@@ -74,22 +74,6 @@ const mostRecentPostDate = await getMostRecentPostDate(posts);
     const categorySubList = document.querySelector('.links-list__item-category .links-list__sub-list');
     const categorySubListItems = document.querySelectorAll('.links-list__item-category .links-list__sub-list .sub-list__item');
     let isCategoryMenuOpen = false;
-    
-    const langIt = document.getElementById('lang-it');
-    const langEn = document.getElementById('lang-en');
-
-    function setLangCookie(lang: string) {
-      const hasConsent = document.cookie.split(';').some((item) => item.trim().startsWith('cookie_consent=true'));
-      if (hasConsent) {
-        document.cookie = `lang=${lang};path=/;max-age=${SIX_MONTHS_IN_SECONDS}`;
-      }
-    }
-
-    function manageLanguageSelection(e: Event, lang: string) {
-      e.preventDefault();
-      setLangCookie(lang);
-      window.location.href = lang === 'it' ? '/' : `/${lang}`;
-    }
 
     function closeMenu() {
       mobileMenu?.children[0].classList.toggle('is-open');
@@ -129,8 +113,6 @@ const mostRecentPostDate = await getMostRecentPostDate(posts);
     closeButton?.addEventListener('click', closeMenu);
     categoryLink?.addEventListener('click', openCategoryMenu);
 
-    langIt?.addEventListener('click', (e) => manageLanguageSelection(e, 'it'));
-    langEn?.addEventListener('click', (e) => manageLanguageSelection(e, 'en'));
   });
 </script>
 
@@ -265,9 +247,5 @@ const mostRecentPostDate = await getMostRecentPostDate(posts);
     &::before {
       content: "";
     }
-  }
-
-  .mobile-menu__separator {
-    flex: 1;
   }
 </style> 

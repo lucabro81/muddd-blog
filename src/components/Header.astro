@@ -1,6 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import SearchForm from './SearchForm.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
 ---
 <header>
 	<div is-="header-content">
@@ -9,10 +10,7 @@ import SearchForm from './SearchForm.astro';
 			<h2 is-="header-sub-title"><a href="/">Vecchie mappe, nuove stelle - Cronache da una frontiera digitale</a></h2>
 		</div>
 		<div class="search-form-container">
-			<div class="language-selector">
-				<a href="/">IT</a>
-				<a href="/en">EN</a>
-			</div>
+			<LanguageSwitcher align="right" />
 			<SearchForm />
 		</div>
 	</div>
