@@ -10,23 +10,19 @@ const { currentLocale } = Astro;
 <div class={`language-switcher language-switcher--${align}`}>
   <a 
     href="#" 
-    class={`language-switcher__item language-switcher__item-it ${currentLocale === 'it' ? 'active' : ''}`}
+    class={`language-switcher__item ${currentLocale === 'it' ? 'active' : ''}`}
     onclick="document.dispatchEvent(new CustomEvent('switch-lang', {detail: {language: 'it'}})); return false;">IT</a>
   <a 
     href="#" 
-    class={`language-switcher__item language-switcher__item-en ${currentLocale === 'en' ? 'active' : ''}`}
+    class={`language-switcher__item ${currentLocale === 'en' ? 'active' : ''}`}
     onclick="document.dispatchEvent(new CustomEvent('switch-lang', {detail: {language: 'en'}})); return false;">EN</a>
 </div>
 
 <script>
-  // document.addEventListener('DOMContentLoaded', () => {
     const ONE_YEAR_IN_MS = 365 * 24 * 60 * 60 * 1000;
-    // const langIt = document.querySelector('.language-switcher__item-it');
-    // const langEn = document.querySelector('.language-switcher__item-en');
 
     function manageLanguageSelection(e: Event, lang: string) {
       setLangCookie(lang);
-      console.log('lang', lang);
       window.location.href = lang === 'it' ? '/' : `/${lang}`;
     }
 
@@ -42,41 +38,7 @@ const { currentLocale } = Astro;
       const { language } = (e as CustomEvent<{ language: string }>).detail;
       manageLanguageSelection(e, language);
     });
-
-    // function getLanguageFromCookie() {
-    //   const lang = document.cookie.split(';').find((item) => item.trim().startsWith('lang='));
-    //   return lang ? lang.split('=')[1] : null;
-    // }
-
-    // function setActiveLanguage() {
-    //   let preferredLang = getLanguageFromCookie();
-    //   if (!preferredLang) {
-    //     const locale = navigator.language.split('-')[0];
-    //     if (locale === 'it') {
-    //       preferredLang = 'it';
-    //     } else {
-    //       preferredLang = 'en';
-    //     }
-    //   }
-    //   const langItems = document.querySelectorAll('.language-switcher__item');
-    //   const langItem = document.querySelector(`.language-switcher__item-${preferredLang}`);
-
-    //   if (langItem) {
-    //     langItems.forEach((item) => item.classList.remove('active'));
-    //     langItem.classList.add('active');
-    //   }
-    // }
-
-    // langIt?.addEventListener('click', (e) => {
-    //   e.preventDefault();
-    //   manageLanguageSelection(e, 'it');
-    // });
-    // langEn?.addEventListener('click', (e) => {
-    //   e.preventDefault();
-    //   manageLanguageSelection(e, 'en');
-    // });
-    // setActiveLanguage();
-  // });
+    
 </script>
 
 <style>
