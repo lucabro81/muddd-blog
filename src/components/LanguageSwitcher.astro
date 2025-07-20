@@ -8,32 +8,40 @@ const { currentLocale } = Astro;
 --- 
 
 <div class={`language-switcher language-switcher--${align}`}>
-  <a href="#" class={`language-switcher__item language-switcher__item-it ${currentLocale === 'it' ? 'active' : ''}`}>IT</a>
-  <a href="#" class={`language-switcher__item language-switcher__item-en ${currentLocale === 'en' ? 'active' : ''}`}>EN</a>
+  <a 
+    href="#" 
+    class={`language-switcher__item language-switcher__item-it ${currentLocale === 'it' ? 'active' : ''}`}
+    onclick="document.dispatchEvent(new CustomEvent('switch-lang', {detail: {language: 'it'}})); return false;">IT</a>
+  <a 
+    href="#" 
+    class={`language-switcher__item language-switcher__item-en ${currentLocale === 'en' ? 'active' : ''}`}
+    onclick="document.dispatchEvent(new CustomEvent('switch-lang', {detail: {language: 'en'}})); return false;">EN</a>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  // document.addEventListener('DOMContentLoaded', () => {
     const ONE_YEAR_IN_MS = 365 * 24 * 60 * 60 * 1000;
-    const langIt = document.querySelector('.language-switcher__item-it');
-    const langEn = document.querySelector('.language-switcher__item-en');
+    // const langIt = document.querySelector('.language-switcher__item-it');
+    // const langEn = document.querySelector('.language-switcher__item-en');
 
     function manageLanguageSelection(e: Event, lang: string) {
-      e.preventDefault();
       setLangCookie(lang);
+      console.log('lang', lang);
       window.location.href = lang === 'it' ? '/' : `/${lang}`;
     }
 
     function setLangCookie(lang: string) {
       const hasConsent = document.cookie.split(';').some((item) => item.trim().startsWith('cookie_consent=true'));
-      console.log('hasConsent', hasConsent);
       if (hasConsent) {
         const expires = new Date(Date.now() + ONE_YEAR_IN_MS).toUTCString();
-        console.log('expires', expires);
         document.cookie = `lang=${lang}; path=/; expires=${expires}; SameSite=Lax`;
-        console.log('document.cookie', document.cookie);
       }
     }
+
+    document.addEventListener('switch-lang', (e: Event) => {
+      const { language } = (e as CustomEvent<{ language: string }>).detail;
+      manageLanguageSelection(e, language);
+    });
 
     // function getLanguageFromCookie() {
     //   const lang = document.cookie.split(';').find((item) => item.trim().startsWith('lang='));
@@ -59,10 +67,16 @@ const { currentLocale } = Astro;
     //   }
     // }
 
-    langIt?.addEventListener('click', (e) => manageLanguageSelection(e, 'it'));
-    langEn?.addEventListener('click', (e) => manageLanguageSelection(e, 'en'));
+    // langIt?.addEventListener('click', (e) => {
+    //   e.preventDefault();
+    //   manageLanguageSelection(e, 'it');
+    // });
+    // langEn?.addEventListener('click', (e) => {
+    //   e.preventDefault();
+    //   manageLanguageSelection(e, 'en');
+    // });
     // setActiveLanguage();
-  });
+  // });
 </script>
 
 <style>
