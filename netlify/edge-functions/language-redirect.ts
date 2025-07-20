@@ -5,6 +5,9 @@ const DEFAULT_LANG = 'it';
 const OTHER_LANGS = ['en']; // All languages except the default
 
 export default async (request: Request, context: Context) => {
+
+  console.log('language-redirect');
+
   const { url, headers } = request;
   const { cookies } = context;
   const currentPath = new URL(url).pathname;

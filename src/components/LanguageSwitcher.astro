@@ -4,11 +4,12 @@ interface Props {
 }
 
 const { align } = Astro.props;
+const { currentLocale } = Astro;
 --- 
 
 <div class={`language-switcher language-switcher--${align}`}>
-  <a href="#" class={`language-switcher__item language-switcher__item-it`}>IT</a>
-  <a href="#" class={`language-switcher__item language-switcher__item-en`}>EN</a>
+  <a href="#" class={`language-switcher__item language-switcher__item-it ${currentLocale === 'it' ? 'active' : ''}`}>IT</a>
+  <a href="#" class={`language-switcher__item language-switcher__item-en ${currentLocale === 'en' ? 'active' : ''}`}>EN</a>
 </div>
 
 <script>
@@ -25,31 +26,42 @@ const { align } = Astro.props;
 
     function setLangCookie(lang: string) {
       const hasConsent = document.cookie.split(';').some((item) => item.trim().startsWith('cookie_consent=true'));
+      console.log('hasConsent', hasConsent);
       if (hasConsent) {
         const expires = new Date(Date.now() + ONE_YEAR_IN_MS).toUTCString();
+        console.log('expires', expires);
         document.cookie = `lang=${lang}; path=/; expires=${expires}; SameSite=Lax`;
+        console.log('document.cookie', document.cookie);
       }
     }
 
-    function getLanguageFromCookie() {
-      const lang = document.cookie.split(';').find((item) => item.trim().startsWith('lang='));
-      return lang ? lang.split('=')[1] : null;
-    }
+    // function getLanguageFromCookie() {
+    //   const lang = document.cookie.split(';').find((item) => item.trim().startsWith('lang='));
+    //   return lang ? lang.split('=')[1] : null;
+    // }
 
-    function setActiveLanguage() {
-      const preferredLang = getLanguageFromCookie();
-      const langItems = document.querySelectorAll('.language-switcher__item');
-      const langItem = document.querySelector(`.language-switcher__item-${preferredLang}`);
+    // function setActiveLanguage() {
+    //   let preferredLang = getLanguageFromCookie();
+    //   if (!preferredLang) {
+    //     const locale = navigator.language.split('-')[0];
+    //     if (locale === 'it') {
+    //       preferredLang = 'it';
+    //     } else {
+    //       preferredLang = 'en';
+    //     }
+    //   }
+    //   const langItems = document.querySelectorAll('.language-switcher__item');
+    //   const langItem = document.querySelector(`.language-switcher__item-${preferredLang}`);
 
-      if (langItem) {
-        langItems.forEach((item) => item.classList.remove('active'));
-        langItem.classList.add('active');
-      }
-    }
+    //   if (langItem) {
+    //     langItems.forEach((item) => item.classList.remove('active'));
+    //     langItem.classList.add('active');
+    //   }
+    // }
 
     langIt?.addEventListener('click', (e) => manageLanguageSelection(e, 'it'));
     langEn?.addEventListener('click', (e) => manageLanguageSelection(e, 'en'));
-    setActiveLanguage();
+    // setActiveLanguage();
   });
 </script>
 
