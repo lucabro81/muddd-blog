@@ -1,26 +1,28 @@
 ---
 import PageLink from "./PageLink.astro";
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import { useTranslations } from "../utils";
 
 const { currentLocale } = Astro;
+const t = await useTranslations(Astro.currentLocale);
 ---
 
 <div is-="horizontal-menu">
   <hr />
   <ul>
     <li>
-      <PageLink href={getRelativeLocaleUrl(currentLocale ?? 'it', "")}>Home</PageLink>
+      <PageLink href={getRelativeLocaleUrl(currentLocale ?? 'it', "")}>{t('menu.home')}</PageLink>
     </li>
     <li>
-      <PageLink href={getRelativeLocaleUrl(currentLocale ?? 'it', 'il-progetto')}>Il Progetto</PageLink>
+      <PageLink href={getRelativeLocaleUrl(currentLocale ?? 'it', 'il-progetto')}>{t('menu.project')}</PageLink>
     </li>
     <li>
-      <PageLink href={getRelativeLocaleUrl(currentLocale ?? 'it', 'milestones')}>Milestones</PageLink>
+      <PageLink href={getRelativeLocaleUrl(currentLocale ?? 'it', 'milestones')}>{t('menu.milestones')}</PageLink>
     </li>
     <li is-="right-end">
       <ul>
         <li>
-          <PageLink href={getRelativeLocaleUrl(currentLocale ?? 'it', 'ai-disclaimer')}>AI Disclaimer</PageLink>
+          <PageLink href={getRelativeLocaleUrl(currentLocale ?? 'it', 'ai-disclaimer')}>{t('menu.ai_disclaimer')}</PageLink>
         </li>
       </ul>
     </li>

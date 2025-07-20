@@ -1,8 +1,5 @@
-// const posts = Object.values(import.meta.glob<Record<string, any>>('../pages/posts/*.mdx'))
-
-import { getCollection, getEntry, type CollectionEntry, type RenderResult } from "astro:content";
+import { getCollection } from 'astro:content';
 import type { Post } from "./types";
-import type { AstroComponentFactory } from "astro/runtime/server/render/astro/factory.js";
 
 export const getAllCategories = async (posts: Post[]) => {
   const rowCategories = posts.map(post => post.data.category);
@@ -14,6 +11,7 @@ export const getAllCategories = async (posts: Post[]) => {
   }, []);
   return Array.from(new Set(flattenedCategories.sort()))
 };
+
 export const getMostRecentPostDate = async (posts: Post[]) => {
   const postDates = posts.map(post => post.data.pubDate);
   return postDates.sort((a, b) => new Date(b).valueOf() - new Date(a).valueOf())[0]
@@ -24,14 +22,36 @@ export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
 
   return blogEntries.map(entry => {
-    // 2. Estrai lo slug "puro", senza prefisso di lingua
     const slug = entry.slug.split('/').pop() ?? '';
 
-    // 3. Passa la lingua del post come `prop`
     return {
-      params: { slug }, // Lo slug per l'URL è sempre "puro"
-      props: { lang: entry.data.lang }, // Passiamo la lingua specifica di questo post
+      params: { slug },
+      props: { lang: entry.data.lang },
     };
   });
+}
+
+export async function useTranslations(locale: string | undefined) {
+  const translations = await getCollection('i18n');
+  const dictionary = translations.find((t) => t.id === locale);
+
+  if (!dictionary) {
+    throw new Error(`Translation not found for locale: ${locale}`);
+  }
+
+  // Restituisce una funzione 't' che puoi usare per ottenere le stringhe
+  return function t(key: string): string {
+    // Naviga l'oggetto JSON usando la chiave, es. "header.nav.home"
+    const keys = key.split('.');
+    let result: any = dictionary.data;
+    for (const k of keys) {
+      result = result[k];
+      if (result === undefined) {
+        // Se una chiave non viene trovata, ritorna la chiave stessa per un facile debug
+        return key;
+      }
+    }
+    return result;
+  };
 }
 

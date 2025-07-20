@@ -2,12 +2,15 @@
 import Logo from './Logo.astro';
 import SearchForm from './SearchForm.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
+import { useTranslations } from "../utils";
+
+const t = await useTranslations(Astro.currentLocale);
 ---
 <header>
 	<div is-="header-content">
 		<div class="header-main">
 			<Logo />
-			<h2 is-="header-sub-title"><a href="/">Vecchie mappe, nuove stelle - Cronache da una frontiera digitale</a></h2>
+			<h2 is-="header-sub-title"><a href="/">{t('header.subtitle')}</a></h2>
 		</div>
 		<div class="search-form-container">
 			<LanguageSwitcher align="right" />

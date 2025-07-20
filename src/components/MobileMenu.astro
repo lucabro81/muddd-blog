@@ -8,6 +8,9 @@ import { getAllCategories, getMostRecentPostDate } from "../utils";
 import { getCollection } from "astro:content";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 import FlexSpacer from "./FlexSpacer.astro";
+import { useTranslations } from "../utils";
+
+const t = await useTranslations(Astro.currentLocale);
 
 const posts = await getCollection('blog', ({ id }) => {
   return id.startsWith('it/');
@@ -22,12 +25,12 @@ const mostRecentPostDate = await getMostRecentPostDate(posts);
   </button>
   <nav class="mobile-menu__nav">
     <ul class="mobile-menu__links-list">
-      <li class="links-list__item"><PageLink href="/">Home</PageLink></li>
-      <li class="links-list__item"><PageLink href="/il-progetto">Il Progetto</PageLink></li>
-      <li class="links-list__item"><PageLink href="/about-me">About Me</PageLink></li>
+      <li class="links-list__item"><PageLink href="/">{t('menu.home')}</PageLink></li>
+      <li class="links-list__item"><PageLink href="/il-progetto">{t('menu.project')}</PageLink></li>
+      <li class="links-list__item"><PageLink href="/about-me">{t('menu.about')}</PageLink></li>
       <li class="links-list__item links-list__item-category" data-category-count={allCategories.length}>
         <div class="links-list__item-title">
-          <span class="links-list__item-title-icon">/</span><PageLink href="/#">Categorie</PageLink>
+          <span class="links-list__item-title-icon">/</span><PageLink href="/#">{t('menu.categories')}</PageLink>
         </div>
         <ul class="links-list__sub-list">
           {allCategories.map((category) => (
@@ -35,7 +38,7 @@ const mostRecentPostDate = await getMostRecentPostDate(posts);
           ))}
         </ul>
       </li>
-      <li class="links-list__item"><PageLink href="/ai-disclaimer">AI Disclaimer</PageLink></li>
+      <li class="links-list__item"><PageLink href="/ai-disclaimer">{t('menu.ai_disclaimer')}</PageLink></li>
     </ul>
   </nav>
   <FlexSpacer />

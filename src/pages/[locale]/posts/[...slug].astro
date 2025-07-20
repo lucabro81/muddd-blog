@@ -1,23 +1,26 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
 import BlogPostLayout from '../../../layouts/BlogPostLayout.astro';
+import { i18n } from "astro:config/client";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
+  const paths: { params: { locale: string; slug: string } }[] = [];
+  const locales = i18n?.locales
+  .filter((locale) => locale as string !== i18n?.defaultLocale)
 
-  return blogEntries.filter(entry => entry.data.lang === 'en').map(entry => {
+  for (const entry of blogEntries.filter(entry => entry.data.lang === 'en')) {
     const slug = entry.slug.split('/').pop() ?? '';
-    return {
-      params: { slug },
-      props: { lang: 'en' },
-    };
-  });
+    locales?.forEach((locale) => {
+      paths.push({ params: { locale: locale as string, slug } });
+    });
+  }
+  return paths;
 }
 
-const { slug } = Astro.params;
-const { lang } = Astro.props;
+const params = Astro.params;
+const originalSlug = `${params.locale}/${params.slug}`;
 
-const originalSlug = `${lang}/${slug}`;
 const entry = await getEntry('blog', originalSlug);
 
 if (!entry) {

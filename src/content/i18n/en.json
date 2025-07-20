@@ -1,0 +1,22 @@
+{
+  "header": {
+    "subtitle": "Old maps, new stars - Chronicles from a digital frontier"
+  },
+  "sidebar": {
+    "about_me": "About Me",
+    "bio": "A developer who should reflect more on his questionable life choices.",
+    "categories": "Categories"
+  },
+  "menu": {
+    "home": "Home",
+    "about": "About Me",
+    "categories": "Categories",
+    "project": "The Project",
+    "milestones": "Milestones",
+    "ai_disclaimer": "AI Disclaimer"
+  },
+  "page_titles": {
+    "latest_posts": "Latest Posts",
+    "contacts": "Contacts"
+  }
+}

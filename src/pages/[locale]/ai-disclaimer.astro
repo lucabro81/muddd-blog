@@ -1,5 +1,16 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import { useTranslations } from "../../utils";
+import { i18n } from "astro:config/client";
+
+export function getStaticPaths() {
+  return i18n?.locales
+  .filter((locale) => locale as string !== i18n?.defaultLocale)
+  .map((locale) => ({ params: { locale: locale as string } }));
+}
+
+const { locale } = Astro.params;
+const t = await useTranslations(locale);
 ---
 <PageLayout title="AI Disclaimer">
   <p>

@@ -1,0 +1,22 @@
+{
+  "header": {
+    "subtitle": "Vecchie mappe, nuove stelle - Cronache da una frontiera digitale"
+  },
+  "sidebar": {
+    "about_me": "Chi Sono",
+    "bio": "Solo un dev che dovrebbe riflettere di più sulle proprie discutibili scelte di vita.",
+    "categories": "Categorie"
+  },
+  "menu": {
+    "home": "Home",
+    "about": "Chi Sono",
+    "categories": "Categorie",
+    "project": "Il Progetto",
+    "milestones": "Milestones",
+    "ai_disclaimer": "Disclaimer AI"
+  },
+  "page_titles": {
+    "latest_posts": "Ultimi Posts",
+    "contacts": "Contatti"
+  }
+}

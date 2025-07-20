@@ -1,14 +1,22 @@
 ---
 import { getAllCategories } from "../utils";
 import PageLink from "./PageLink.astro";
+import { useTranslations } from "../utils";
+import { getCollection } from "astro:content";
 
-const posts = Object.values(import.meta.glob<Record<string, any>>('../pages/**/posts/*.mdx'))
-const allCategories = await getAllCategories(posts as (() => Promise<Record<string, any>>)[]);
+const t = await useTranslations(Astro.currentLocale);
+
+const posts = await getCollection('blog', ({ id }) => {
+  return id.startsWith('it/');
+})
+const allCategories = await getAllCategories(posts);
 ---
 <aside>
-  <h3>About Me</h3>
-  <p>Solo un dev che dovrebbe riflettere di più sulle proprie discutibili scelte di vita.</p>
-  <h3>Categories</h3>
+  <h3>{t('sidebar.about_me')}</h3>
+  <p>{t('sidebar.bio')}</p>
+  <h3>
+    {t('sidebar.categories')}
+  </h3>
   <ul>
     {allCategories.map((category) => (
       <li><PageLink href=`/posts/category/${category}`>{category}</PageLink></li>
