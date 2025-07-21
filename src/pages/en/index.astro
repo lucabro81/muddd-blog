@@ -1,17 +1,10 @@
 ---
 import HomeLayout from '../../layouts/HomeLayout.astro';
 import { getCollection } from 'astro:content';
-import { i18n } from "astro:config/client";
 
-export function getStaticPaths() {
-  return i18n?.locales
-  .filter((locale) => locale as string !== i18n?.defaultLocale)
-  .map((locale) => ({ params: { locale: locale as string } }));
-}
-
-const { locale } = Astro.params;
+const { currentLocale } = Astro;
 const allPosts = (await getCollection('blog', ({ data }) => {
-	return data.lang === locale;
+	return data.lang === currentLocale;
 })).sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf());
 ---
 
