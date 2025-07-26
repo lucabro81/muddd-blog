@@ -2,6 +2,7 @@
 import PageLink from "./PageLink.astro";
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { useTranslations } from "../utils";
+import FlexSpacer from "./FlexSpacer.astro";
 
 const { currentLocale } = Astro;
 const t = await useTranslations(Astro.currentLocale);
@@ -19,12 +20,9 @@ const t = await useTranslations(Astro.currentLocale);
     <!-- <li>
       <PageLink href={getRelativeLocaleUrl(currentLocale ?? 'it', 'milestones')}>{t('menu.milestones')}</PageLink>
     </li> -->
+    <FlexSpacer />
     <li class="right-end">
-      <ul>
-        <li>
-          <PageLink href={getRelativeLocaleUrl(currentLocale ?? 'it', 'ai-disclaimer')}>{t('menu.ai_disclaimer')}</PageLink>
-        </li>
-      </ul>
+      <PageLink href={getRelativeLocaleUrl(currentLocale ?? 'it', 'ai-disclaimer')}>{t('menu.ai_disclaimer')}</PageLink>
     </li>
 
   </ul>
@@ -47,13 +45,6 @@ const t = await useTranslations(Astro.currentLocale);
     ul li:before {
       content: "/";
       margin-right: 0;
-    }
-    li.right-end:before {
-      content: "";
-      margin: 0;
-    }
-    li.right-end {
-      margin-left: auto;
     }
 
   @media (max-width: 768px) {
