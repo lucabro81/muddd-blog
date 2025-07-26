@@ -6,8 +6,21 @@
 
 [[plugins]]
   package = "@algolia/netlify-plugin-crawler"
+
   [plugins.inputs]
-  branches = ['main', 'search']
+  branches = ['main']
   disabled = false
   pathPrefix = "/"
   renderJavaScript = true
+
+  [plugins.inputs.crawler]
+  maxDepth = 10
+  followLinks = true
+
+  [plugins.inputs.paths]
+  include = [
+    "/**",
+    "/posts/**", 
+    "/en/**",
+    "/en/posts/**"
+  ]
