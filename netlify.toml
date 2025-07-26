@@ -8,6 +8,6 @@
   package = "@algolia/netlify-plugin-crawler"
   [plugins.inputs]
   branches = ['main', 'search']
-  disabled = true
+  disabled = false
   pathPrefix = "/"
   renderJavaScript = true
