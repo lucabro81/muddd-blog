@@ -1,6 +1,6 @@
 ---
-title: "EN - Appunti dalla frontiera - Un nuovo inizio"
-description: "Il cursore lampeggiante, il comando di movimento, e la descrizione del mondo che ti circonda formarsi una parola alla volta, decretando il tuo destino..."
+title: "Notes from the Frontier - A New Beginning"
+description: "The blinking cursor, the movement command, and the description of the world around you forming one word at a time, sealing your fate..."
 pubDate: "2025-07-05"
 category: ["MUD", "AI"]
 lang: en
@@ -9,308 +9,317 @@ lang: en
 import TitleLined from "../../../components/TitleLined.astro";
 import "../../../styles/posts.css";
 import TableOfContents from "../../../components/TableOfContents.astro";
+import IconGithub from "../../../components/icons/IconGithub.astro";
+import IconLinkedin from "../../../components/icons/IconLinkedin.astro";
 
 <TableOfContents class="table-of-contents">
   <ul class="index-list">
     <li>
-        <a href="#l-idea">L'idea</a>
+        <a href="#the-idea">The Idea</a>
     </li>
     <li>
-      <a href="#omaggio-al-passato">Omaggio al Passato</a>
+      <a href="#tribute-to-the-past">Tribute to the Past</a>
     </li>
     <li>
-      <a href="#lo-stato-dell-arte">Lo Stato dell'Arte</a>
+      <a href="#the-state-of-the-art">The State of the Art</a>
     </li>
     <li>
-      <a href="#obiettivi">Obiettivi</a>
+      <a href="#objectives">Objectives</a>
     </li>
     <li>
-      <a href="#conclusioni">Conclusioni</a>
+      <a href="#conclusions">Conclusions</a>
     </li>
   </ul>
 </TableOfContents>
 
 <p>
-  _Sono fuggito da quello sfortunato incontro per il rotto della cuffia, ho
-  subito ferite_
+  _I barely escaped that unfortunate encounter, I suffered wounds_
 </p>
 
 ```
 > health
 
-- 2/10 PF
+- 2/10 HP
 ```
 
-<p>_e dato fondo a tutte le mie scorte di pozioni curative_</p>
+<p>_and exhausted all my healing potion supplies_</p>
 
 ```
 > inventory
 
-- una spada smussata
-- l'ultima fiala di pozione, vuota
+- a blunt sword
+- the last vial of potion, empty
 ```
 
-<p>_le cose si mettono male, ma devo andare avanti._</p>
+<p>_things are looking bad, but I must press on._</p>
 
 ```
 > go n
 
-- Arrivi davanti all'ingresso principale.
-Non è quello che ti aspettavi.
-Non c'è un ponte levatoio che si abbassa con fragore, non ci sono guardie che controllano,
-non c'è movimento di alcun tipo.
-I portali che vedi sono semi-aperti, come se fossero stati lasciati aperti per un breve momento
-che non si è mai concluso...
+- You arrive at the main entrance.
+It's not what you expected.
+There's no drawbridge thundering down, no guards checking,
+no movement of any kind.
+The portals you see are half-open, as if they were left open for a brief moment
+that never ended...
 
 ```
 
 <TitleLined class="title-lined">
-  <h2 id="l-idea">L'idea</h2>
+  <h2 id="the-idea">The Idea</h2>
 </TitleLined>
 
 <p>
-  Il cursore lampeggiante, il comando di movimento, e la descrizione del mondo
-  che ti circonda formarsi una parola alla volta, decretando il tuo destino.
+  The blinking cursor, the movement command, and the description of the world
+  around you forming one word at a time, sealing your fate.
 </p>
 
 <p>
-  Non è niente di nuovo, cose del genere esistono da quando esiste internet, ma
-  cosa può dare può dare una dimensione in più a questo mezzo? E se potesse
-  suggerire una scintilla di coscienza? Un mondo che non sia statico, ma che
-  cambi con il tempo e con gli eventi.
+  It's nothing new, things like this have existed since the internet began, but
+  what could give an extra dimension to this medium? What if it could
+  suggest a spark of consciousness? A world that isn't static, but that
+  changes with time and events.
 </p>
 
 <p>
-  Un mondo che ricordi la battaglia di ieri descrivendo oggi le macerie fumanti
-  che ne sono testimonianza.
+  A textual world that remembers yesterday's battle by describing today the smoking ruins
+  that bear witness to it, in a unique way, every time this happens.
 </p>
 
 <p>
-  Una storia generata momento per momento, senza che il suo creatore l'abbia
-  prevista.
+  A story generated moment by moment, without its creator having
+  foreseen its details.
 </p>
 
 <p>
-  Sono Luca, scrivo codice, e questo è l'esperimento che ho deciso di mettere in
-  piedi per rispondere a queste domande.
+  I'm Luca, I write code, and this is the experiment I've decided to set up
+  to answer these questions.
 </p>
 
 <p>
-  Cosa succede se, invece di creare un mondo statico, lo facciamo evolvere nel
-  tempo? Cosa succede se prendiamo un LLM e gli facciamo generare un mondo,
-  delle interazioni, delle azioni, delle scelte, delle decisioni? Tutto in tempo
-  reale?
+  What happens if, instead of creating a static world, we make it evolve over
+  time? If we take an LLM and have it generate a world, interactions, actions, choices and decisions? All in real time?
 </p>
 
 <p>
-  Risposta onesta? Un sacco di cose sgradevoli, gli esempi non mancano, tra
-  allucinazioni e bias c'è solo l'imbarazzo della scelta. È solo questione di
-  tempo prima che inizi a blaterare insensatezze con una sicurezza invidiabile.
+  Honest answer? A lot of unpleasant things, examples abound, between
+  hallucinations and bias there's an embarrassment of riches. It's only a matter of
+  time before it starts babbling nonsense with enviable confidence.
 </p>
 
 <p>
-  Tuttavia se prendiamo questo LLM, anche uno non particolarmente grande, e lo
-  dotiamo di un training specifico, di un set di dati solido ed esaustivo da cui
-  attingere conoscenza e di un prompt ben ingegnerizzato, allora il risultato
-  cambia. Possiamo ottenere un <strong>Narratore</strong> . Un'entità che decide
-  cosa raccontare, cosa mostrare, cosa nascondere, in modo coerente con il
-  contesto, con le scelte fatte e con le azioni intraprese. Se due giocatori o
-  PNG hanno lottato, per esempio, potremmo ottenere una cosa del genere:
+  However, if we take this LLM, even one that's not particularly large, and we
+  equip it with specific training, a solid and exhaustive dataset to
+  draw knowledge from, and a well-engineered prompt, then the result
+  changes. We can get a <strong>Narrator</strong>. An entity that decides
+  what to tell, what to show, what to hide, in a way that's consistent with the
+  context, with the choices made and with the actions taken. If two players or
+  NPCs have fought, for example, we could get something like this:
 </p>
 
 ```
 > look
 
-- L'aria sa di ozono, bruciature sui muri e mobili carbonizzati:
-un scontro tra energie magiche si è appena consumato.
+- The air smells of ozone, burns on the walls and charred furniture:
+a clash between magical energies has just taken place.
 
 > health
 
-- 2/10 PF
+- 2/10 HP
 
-La spalla destra pulsa con dolore: la freccia acida che ti ha colpito poco prima ha lasciato
-una brutta ferita che può guarire solo con cure adeguate, devi trovare un guaritore e in fretta!
+Your right shoulder throbs with pain: the acid arrow that hit you earlier has left
+a nasty wound that can only heal with proper care, you need to find a healer and fast!
 ```
 
 <p>
-  Quando iniziai a giocare, a muovermi in questo tipo di mondo fatto di parole,
-  non è stato facile. I mondi virtuali, spesso in visuale isometrica, ma anche
-  alcuni che cominciavano ad implementare un 3d convincente, erano già lì.
-  Sollevavano dallo sforzo di dover immaginare tutto: si ammiravano, la risposta
-  era immediata, riempiva gli occhi. Meravigliosi, certo, ma per quanto vivi e
-  pulsanti, non era e non è possibile veramente <strong>viverli</strong>. Sono
-  rinchiusi o, meglio, posti su binari, che per quanto diversificati, sono
-  finiti, limitati.
+  When I started playing, moving in this type of world made of words,
+  it wasn't easy. Virtual worlds in 2D or 3D were already there,
+  relieving the effort of having to imagine everything: they were admired,
+  the response was immediate, filling the eyes.
+  Wonderful, certainly, but for all their liveliness and pulsation, in my personal opinion and experience, they lack that granularity that makes a certain moment unique and indeed unrepeatable.
 </p>
 
 <p>
-  Il mondo testuale, invece, chiede al giocatore un impegno. Costa fatica
-  mettersi lì e immaginare, e non è detto che si riesca subito a farlo, è
-  necessario dare fiducia a questo processo.
+  The textual world, instead, asks the player for commitment. It takes effort
+  to sit there and imagine, and it's not certain you'll succeed right away, it's
+  necessary to trust this process.
 </p>
 
 <p>
-  Ed è qui che la nostra idea torna in gioco. Se il Narratore IA che abbiamo
-  costruito ci aiuta a ritagliare su misura un angolo di mondo in base a ciò che
-  è successo prima, quella fatica iniziale viene mitigata. Se tutto risponde in
-  modo sensato e non si avverte più il limite di un mondo statico, allora la
-  fiducia del giocatore viene ripagata all'istante.
+  And this is where our idea comes back into play. If the AI Narrator we've
+  built helps us tailor a corner of the world based on what
+  happened before and the state of the world, that initial effort is mitigated. If everything responds
+  sensibly, the static world limit is no longer felt and the
+  player's trust is instantly rewarded.
 </p>
 
 <p>
-  **MUDDD** (Multi User Data Driven Dungeon) è questo: il tentativo di fare
-  incontrare questi due mondi. Vedere se un testo ben scritto e dinamicamente
-  generato può rendere un universo testuale più vivo e convincente di qualsiasi
-  grafica, togliere i limiti di un motore grafico e fisico e di assets
-  pregenerati, senza bisogno di GPU ultra performanti. È un esperimento per
-  vedere se questa idea riesce a reggersi sulle sue gambe.
+  **MUDDD** (Multi User Data Driven Dungeon) is this: the attempt to bring
+  these two worlds together. To see if well-written and dynamically
+  generated text can make a textual universe more alive and convincing than any
+  graphics, removing the limits of a graphics and physics engine and pre-generated assets,
+  without needing ultra-performant GPUs. It's an experiment to
+  see if this idea can stand on its own legs.
 </p>
 
 <TitleLined class="title-lined">
-  <h2 id="omaggio-al-passato">Omaggio al Passato</h2>
+  <h2 id="tribute-to-the-past">Tribute to the Past</h2>
 </TitleLined>
 <div>
   <p>
-    Nessun esploratore parte senza una mappa, per quanto incompleta. Questa
-    frontiera non nasce dal nulla, ma poggia sulle rovine e sulle fondamenta di
-    mondi che ci hanno preceduto e che hanno formato un modo di narrare. Il mio
-    lavoro vuole essere un omaggio a due grandi scuole di pensiero. Da un lato,
-    la robustezza dei <a href="https://dikumud.com/" _target="_blank">DikuMUD</a> e dei loro
-    derivati (credo che il primo in assoluto a cui ho giocato fosse <a href="https://www.clessidra.it/" _target="_blank">Clessidra</a>), che hanno definito le
-    meccaniche, il combattimento e la progressione che per decenni sono state la
-    spina dorsale del gioco di ruolo online.
+    No explorer sets out without a map, however incomplete. This
+    frontier isn't born from nothing, but rests on the ruins and foundations of
+    worlds that preceded us and formed a way of storytelling. My
+    work aims to be a tribute to two great schools of thought. On one hand,
+    the robustness of <a href="https://dikumud.com/" _target="_blank">DikuMUD</a> and their
+    derivatives (I believe the very first one I played was <a href="https://www.clessidra.it/" _target="_blank">Clessidra</a>), which defined the
+    mechanics, combat and progression that for decades have been the
+    backbone of online role-playing games.
   </p>
 </div>
 
 <p>
-  Dall'altro, l'ambizione di mondi persistenti come{" "}
-  <a href="https://uo.com/" _target="_blank">Ultima Online</a>, dove le azioni dei giocatori
-  lasciavano cicatrici e creavano storie visibili a tutti.{" "}
-  <strong>MUDDD</strong> non cerca di reinventare la ruota delle meccaniche, ma
-  di prendere quel solido telaio e montargli un motore narrativo completamente
-  nuovo, vivo e non prevedibile.
+  On the other hand, the ambition of persistent worlds like 
+  <a href="https://uo.com/" _target="_blank">Ultima Online</a>, where player actions
+  left scars and created stories visible to all. 
+  <strong>MUDDD</strong> doesn't seek to reinvent the wheel of mechanics, but
+  to take that solid framework and mount a completely new narrative engine on it,
+  one that's alive and unpredictable.
 </p>
 
 <TitleLined class="title-lined">
-  <h2 id="lo-stato-dell-arte">Lo Stato dell'Arte</h2>
+  <h2 id="the-state-of-the-art">The State of the Art</h2>
 </TitleLined>
 
 <p>
-  Una frontiera, per definizione, ha pochi abitanti, ma non sono il primo ad
-  aver piantato una bandiera in queste terre inesplorate. Esistono già progetti
-  notevoli che usano l'IA generativa per creare esperienze testuali, ed è giusto
-  riconoscerli per capire dove si posiziona <strong>MUDDD</strong>.
+  A frontier, by definition, has few inhabitants, but I'm not the first to
+  have planted a flag in these unexplored lands. There are already notable projects
+  that use generative AI to create textual experiences, and it's right to
+  acknowledge them to understand where <strong>MUDDD</strong> stands.
 </p>
 
 <p>
-  Il nome più importante è senza dubbio{" "}
-  <a href="https://aidungeon.com/" _target="_blank">AI Dungeon</a>. È un progetto affascinante
-  che offre una libertà quasi assoluta, permettendo al giocatore di fare
-  letteralmente qualsiasi cosa in un'avventura a giocatore singolo generata al
-  volo, non parlerò ora di quello che non mi convince di quell'approccio, ma è
-  un progetto che ha dato un impulso enorme al mondo della narrazione dinamica.
-  È un simulatore di storie incredibilmente potente, una vera e propria sandbox
-  per l'immaginazione.
+  One that has most attracted my attention is undoubtedly
+  <a href="https://aidungeon.com/" _target="_blank">AI Dungeon</a>. It's a fascinating project
+  that offers almost absolute freedom, allowing the player to do
+  literally anything in a single-player adventure generated on
+  the fly, I won't speak now of what doesn't convince me about that approach, but it's
+  a project that has given enormous impetus to the world of dynamic storytelling.
+  It's an incredibly powerful story simulator, a true sandbox
+  for the imagination.
 </p>
 
 <p>
-  Il mio approccio, tuttavia, si differenzia per tre aspetti fondamentali.
-  <strong>MUDDD</strong> non vuole essere una sandbox, o, per lo meno, non _solo_
-  una sandbox e non _così_ sandbox, ma un mondo di gioco multiplayer con regole e
-  persistenza.
+  My approach, however, differs in three fundamental aspects.
+  <strong>MUDDD</strong> doesn't want to be a sandbox, or, at least, not _only_
+  a sandbox and not _so_ sandbox, but a multiplayer game world with rules and
+  persistence.
 </p>
 
 <ul>
   <li>
-    <strong>MUDDD</strong> ha una struttura di gioco, con statistiche, abilità e obiettivi. 
-    Un sistema di eventi e caratteristiche da applicare alle entità del mondo che ne influenzano la resa narrativa. 
-    È un gioco di ruolo, non un'improvvisazione.
+    <strong>MUDDD</strong> has a game structure, with statistics, abilities and objectives. 
+    A system of events and characteristics to apply to world entities that influence their narrative rendering. 
+    It's a role-playing game, not an improvisation.
   </li>
 
   <li>
-    Lo scopo di <strong>MUDDD</strong> è quello di creare principalmente un mondo
-    persistente, con un'evoluzione dinamica conseguenza delle scelte fatte dai
-    giocatori, con una granularità (quasi) infinita.
+    The purpose of <strong>MUDDD</strong> is to create primarily a persistent
+    world, with dynamic evolution as a consequence of choices made by
+    players, with (almost) infinite granularity.
   </li>
 
   <li>
-    Sebbene questo progetto permetta anche una narrazione esclusivamente single
-    player, non è il suo scopo principale. L'interazione tra giocatori deve
-    esserci, e l'llm è un motore che la può facilitare.
+    Although this project also allows exclusively single-player
+    storytelling, it's not its main purpose. Interaction between players must
+    exist, and the LLM is an engine that can facilitate it.
   </li>
 </ul>
 
 <p>
-  Oltre a questo, sono certo esistano altri progetti che hanno seguito questo
-  stesso percorso; non li elencheremo ora, ma potrebbero essere oggetto di altri
-  post e di altre analisi. Comunque questo progetto si ispira a questi tentativi
-  e cerca di applicare questa logica a tutto il tessuto del mondo di gioco e di
-  chi lo abita.
+  Beyond this, I'm certain there are other projects that have followed this
+  same path; we won't list them now, but they could be the subject of other
+  posts and other analyses. However, this project is inspired by these attempts
+  and seeks to apply this logic to the entire fabric of the game world and
+  those who inhabit it.
 </p>
 
 <TitleLined class="title-lined">
-  <h2 id="obiettivi">Obiettivi</h2>
+  <h2 id="objectives">Objectives</h2>
 </TitleLined>
 
 <p>
-  Questo frontiera crescerà secondo questa bussola:
+  This frontier will grow according to this compass:
 </p>
 
 <ul>
   <li>
-    **Persistenza Narrativa:** Voglio un mondo che ricordi. Se una gilda
-    costruisce un avamposto o un drago rade al suolo un villaggio, le
-    descrizioni testuali di quelle aree devono cambiare per sempre, riflettendo
-    la nuova realtà senza un intervento manuale, il risultato deve emergere dai dati.
+    **Narrative Persistence:** I want a world that remembers. If a guild
+    builds an outpost or a dragon razes a village to the ground, the
+    textual descriptions of those areas must change forever, reflecting
+    the new reality without manual intervention, the result must emerge from the data.
   </li>
   <li>
-    **Un'IA "al guinzaglio":** sebbene abbia avuto alcune idee in cui
-    l'inaffidabilità di una narrazione basata sulle scelte di un LLM potrebbe
-    avere senso, in linea di massima questo non dovrebbe essere una sorta di dio
-    caotico, ma un Narratore che rispetta il canone, un canovaccio indicatogli
-    in fase di progetto. Sarà vincolato a una lore prestabilita, a regole
-    fisiche e a una "memoria" degli eventi passati, per garantire coerenza e
-    immedesimazione.
+    **A "Leashed" AI:** although I've had some ideas where
+    the unreliability of narration based on LLM choices could
+    make sense, generally speaking this shouldn't be a sort of chaotic
+    god, but a Narrator that respects the canon, a script indicated to it
+    during the design phase. It will be bound to predetermined lore, physical rules
+    and a "memory" of past events, to guarantee coherence and
+    immersion.
   </li>
   <li>
-    **Dinamismo Collettivo:** Il cuore dell'esperimento, ed è una sfumatura del
-    primo punto, ma è vedere come il mondo si evolve sotto la pressione di una
-    comunità. Le descrizioni di un bosco cambieranno se una gilda di taglialegna
-    inizierà a disboscarlo? Le strade diventeranno più sicure se i giocatori
-    pattuglieranno le rotte commerciali?
+    **Collective Dynamism:** The heart of the experiment, and it's a nuance of the
+    first point, but it's seeing how the world evolves under the pressure of a
+    community. Will descriptions of a forest change if a guild of lumberjacks
+    starts to deforest it? Will roads become safer if players
+    patrol trade routes?
   </li>
   <li>
-    **Focus sul Motore:** Prima ancora che un gioco, **MUDDD** è la costruzione
-    di un motore narrativo. Gran parte di questi "Appunti dalla Frontiera" si
-    concentrerà sulle sfide tecniche, sulle soluzioni trovate e sulle lezioni
-    imparate nel tentativo di dare vita a questa visione.
+    **Focus on the Engine:** Before being a game, **MUDDD** is the construction
+    of a narrative engine. Much of these "Notes from the Frontier" will
+    focus on technical challenges, solutions found and lessons
+    learned in the attempt to bring this vision to life.
   </li>
 </ul>
 
 <TitleLined class="title-lined">
-  <h2 id="conclusioni">Conclusioni</h2>
+  <h2 id="conclusions">Conclusions</h2>
 </TitleLined>
 
-<p>La domanda che potrebbe sorgere, e che mi sono fatto anch'io, è:</p>
+<p>The question that might arise, and that I asked myself too, is:</p>
 
-<p>"È davvero così necessario?"</p>
+<p>"Why?"</p>
 
 <p>
-  Accidenti, no! Certo che non è necessario, nulla è <strong>necessario</strong>
-  , nemmeno il pc da cui sto scrivendo! Non è questa la domanda giusta, quella
-  corretta è:
+  But what do I know :), maybe the more correct question is:
 </p>
 
-<p>"Perchè no?"</p>
+<p>"Why not?"</p>
 
 <p>
-  Ci siamo evoluti per esplorare e comprendere, imparare, conoscere ed
-  applicare, da Ulisse a Carl Sagan. Io voglio vedere fino a dove si arriva e
-  magari lasciare che altri continuino da dove mi sono fermato.
+  We evolved to explore and understand, learn, know and
+  apply, from Ulysses to Carl Sagan. I want to see how far we can get and
+  maybe let others continue from where I left off.
 </p>
 
 <p>
-  C'è spazio per tutti, e se volete accompagnarmi, per favore fatevi sentire.
+  There's room for everyone, and if you want to accompany me, please make yourselves heard.
 </p>
 
-<p>A Presto.</p>
+<p class="social-links">
+  <a
+      class="social-links__item"
+      href="https://github.com/lucabro81"
+      target="_blank"
+      aria-label="GitHub"><IconGithub /></a
+  >
+  <a
+      class="social-links__item"
+      href="https://www.linkedin.com/in/lucabrognara/"
+      target="_blank"
+      aria-label="LinkedIn"><IconLinkedin /></a
+  >
+</p>
+
+<p>See you soon.</p>

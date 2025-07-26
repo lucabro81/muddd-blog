@@ -34,7 +34,7 @@ const mostRecentPostDate = await getMostRecentPostDate(posts);
         </div>
         <ul class="links-list__sub-list">
           {allCategories.map((category) => (
-            <li class="links-list__item sub-list__item"><PageLink href=`/posts/category/${category}`>{category}</PageLink></li>
+            <li class="links-list__item sub-list__item"><PageLink href=`/categories/${category}`>{category}</PageLink></li>
           ))}
         </ul>
       </li>

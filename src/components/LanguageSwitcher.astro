@@ -1,29 +1,76 @@
 ---
+import { i18n } from "astro:config/client";
+
 interface Props {
   align: 'left' | 'right';
 }
 
 const { align } = Astro.props;
 const { currentLocale } = Astro;
+const currentUrl = Astro.url.pathname;
+
+const availableLocales = i18n?.locales || ['it', 'en'];
+const defaultLocale = i18n?.defaultLocale || 'it';
 --- 
 
-<div class={`language-switcher language-switcher--${align}`}>
-  <a 
-    href="#" 
-    class={`language-switcher__item ${currentLocale === 'it' ? 'active' : ''}`}
-    onclick="document.dispatchEvent(new CustomEvent('switch-lang', {detail: {language: 'it'}})); return false;">IT</a>
-  <a 
-    href="#" 
-    class={`language-switcher__item ${currentLocale === 'en' ? 'active' : ''}`}
-    onclick="document.dispatchEvent(new CustomEvent('switch-lang', {detail: {language: 'en'}})); return false;">EN</a>
+<div class={`language-switcher language-switcher--${align}`} 
+     data-current-url={currentUrl} 
+     data-default-locale={defaultLocale}
+     data-available-locales={JSON.stringify(availableLocales)}>
+  {availableLocales.map((locale) => (
+    <a 
+      href="#" 
+      class={`language-switcher__item ${currentLocale === locale ? 'active' : ''}`}
+      onclick={`document.dispatchEvent(new CustomEvent('switch-lang', {detail: {language: '${locale}'}})); return false;`}>
+      {(locale as string).toUpperCase()}
+    </a>
+  ))}
 </div>
 
 <script>
     const ONE_YEAR_IN_MS = 365 * 24 * 60 * 60 * 1000;
 
-    function manageLanguageSelection(e: Event, lang: string) {
+    function getTargetUrl(currentPath: string, targetLang: string, defaultLocale: string, availableLocales: string[]): string {
+      // Remove trailing slash for consistency
+      const cleanPath = currentPath.replace(/\/$/, '') || '/';
+      
+      // Handle root page
+      if (cleanPath === '/') {
+        return targetLang === defaultLocale ? '/' : `/${targetLang}`;
+      }
+      
+      // Check if current path starts with any locale prefix
+      let currentLocale = defaultLocale;
+      let pathWithoutLocale = cleanPath;
+      
+      for (const locale of availableLocales) {
+        if (locale !== defaultLocale && cleanPath.startsWith(`/${locale}`)) {
+          currentLocale = locale;
+          pathWithoutLocale = cleanPath.replace(`/${locale}`, '') || '/';
+          break;
+        }
+      }
+      
+      // If target is the default locale, remove any locale prefix
+      if (targetLang === defaultLocale) {
+        return pathWithoutLocale;
+      }
+      
+      // If target is not default locale, add the target locale prefix
+      return `/${targetLang}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
+    }
+
+    function manageLanguageSelection(lang: string) {
       setLangCookie(lang);
-      window.location.href = lang === 'it' ? '/' : `/${lang}`;
+      
+      const languageSwitcher = document.querySelector('.language-switcher') as HTMLElement;
+      const currentPath = languageSwitcher?.dataset.currentUrl || window.location.pathname;
+      const defaultLocale = languageSwitcher?.dataset.defaultLocale || 'it';
+      const availableLocales = JSON.parse(languageSwitcher?.dataset.availableLocales || '["it", "en"]');
+      
+      const targetUrl = getTargetUrl(currentPath, lang, defaultLocale, availableLocales);
+      
+      window.location.href = targetUrl;
     }
 
     function setLangCookie(lang: string) {
@@ -36,7 +83,7 @@ const { currentLocale } = Astro;
 
     document.addEventListener('switch-lang', (e: Event) => {
       const { language } = (e as CustomEvent<{ language: string }>).detail;
-      manageLanguageSelection(e, language);
+      manageLanguageSelection(language);
     });
     
 </script>

@@ -51,6 +51,10 @@
     gap: 0.5rem;
     padding-left: 0.5rem;
   }
+
+  .navigation {
+    padding-top: 2rem;
+  }
 }
 
 @layer components {

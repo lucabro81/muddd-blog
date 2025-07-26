@@ -31,4 +31,60 @@
   .table-of-contents {
     margin-bottom: 2rem;
   }
+  .social-links {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  .social-links__item {
+    display: inline-block;
+  }
+}
+
+.posts-list h2 {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+.posts-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 0;
+}
+.posts-list li {
+  padding-bottom: 1rem;
+  padding-left: 0;
+  gap: 0;
+}
+
+.posts-list li:not(:first-child) {
+  padding-top: 1rem;
+}
+
+.posts-list li:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+
+.posts-list li:before {
+  content: "";
+  padding-left: 0;
+}
+
+.posts-list h3 {
+  margin: 0 0 0.5rem 0;
+}
+.posts-list a {
+  text-decoration: none;
+  color: inherit;
+}
+.posts-list a:hover {
+  text-decoration: underline;
+}
+.posts-list time {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--foreground2);
+}
+.posts-list p {
+  margin: 0;
 }

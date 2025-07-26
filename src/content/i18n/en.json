@@ -17,18 +17,13 @@
   },
   "page_titles": {
     "latest_posts": "Latest Posts",
-    "contacts": "Contacts",
-    "privacy_policy": "Privacy Policy"
+    "category": "Category",
+    "all_categories": "All Categories"
   },
-  "page_content": {
-    "privacy_policy": {
-      "p1": "This privacy policy is made in compliance with the GDPR (General Data Protection Regulation) and is intended for users who subscribe to the newsletter of this blog.",
-      "p2": "The data controller is Luca Brognara, contactable at the email address:",
-      "p3": "The email address provided by the user at the time of registration is used exclusively for sending an email notification of the publication of a new article on the blog.",
-      "p4": "The legal basis for this treatment is the explicit consent of the interested party, provided through the selection of the appropriate box at the time of registration (Art. 6, par. 1, lett. a of the GDPR).",
-      "p5": "The treatment mode and the recipients of the data are:",
-      "p6": "The data will be stored for the time necessary to fulfill the purposes for which they were collected and will not be disclosed to third parties.",
-      "p7": "The data will be stored for the time necessary to fulfill the purposes for which they were collected and will not be disclosed to third parties."
-    }
+  "cookie_banner": {
+    "text": "This website uses cookies to enhance user experience and for language selection. By clicking \"Accept\", you consent to the use of cookies. For more details, please see our",
+    "privacy_link": "Privacy Policy",
+    "accept": "Accept",
+    "refuse": "Refuse"
   }
 }

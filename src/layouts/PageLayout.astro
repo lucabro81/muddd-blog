@@ -10,5 +10,9 @@ const { title } = Astro.props;
     <div is-="page-container">
       <slot />
     </div>
+      
+    <div class="navigation">
+      <a href="/" class="back-link">← Back to Home</a>
+    </div>
   </article>
 </BaseLayout>

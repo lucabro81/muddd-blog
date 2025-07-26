@@ -1,8 +1,8 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
 
 const blog = defineCollection({
   // loader: glob({ pattern: "*/*.mdx", base: "./src/content/blog" }),
-  type: 'content',
+  type: "content",
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -13,7 +13,7 @@ const blog = defineCollection({
 });
 
 const i18n = defineCollection({
-  type: 'data',
+  type: "data",
   schema: z.object({
     header: z.object({
       subtitle: z.string(),
@@ -33,7 +33,14 @@ const i18n = defineCollection({
     }),
     page_titles: z.object({
       latest_posts: z.string(),
-      contacts: z.string(),
+      category: z.string(),
+      all_categories: z.string(),
+    }),
+    cookie_banner: z.object({
+      text: z.string(),
+      privacy_link: z.string(),
+      accept: z.string(),
+      refuse: z.string(),
     }),
   }),
 });

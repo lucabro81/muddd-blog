@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../../layouts/PageLayout.astro';
+import { getAllCategories, useTranslations } from '../../../utils';
+
+// Get translations
+const t = await useTranslations(Astro.currentLocale);
+
+// Get all blog posts and extract categories (English only)\
+const allPosts = await getCollection('blog');
+const categories = await getAllCategories(allPosts.filter(post => post.data.lang === 'en'));
+
+// Count posts per category
+const categoryCount = categories.reduce((acc, category) => {
+  const count = allPosts.filter(post => 
+    post.data.category.includes(category) && post.data.lang === 'en'
+  ).length;
+  acc[category] = count;
+  return acc;
+}, {} as Record<string, number>);
+---
+
+<PageLayout title={t('page_titles.all_categories')}>
+      
+  {categories.length === 0 ? (
+    <p>No categories found.</p>
+  ) : (
+    <div class="categories-grid">
+      {categories.map((category: string) => (
+        <a href={`/en/categories/${category}`} class="category-card">
+          <h2>
+            {category}
+          </h2>
+          <p class="post-count">
+            {categoryCount[category]} {categoryCount[category] === 1 ? 'post' : 'posts'}
+          </p>
+        </a>
+      ))}
+    </div>
+  )}
+    
+</main>
+</PageLayout>
+
+<style>
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  & > * {
+    text-decoration: none;
+  }
+  h2 {
+    color: var(--foreground0);
+  }
+}
+
+.category-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: var(--background1);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  text-align: center;
+}
+
+.category-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.post-count {
+  margin: 0;
+  color: var(--text-muted, #666);
+  font-size: 0.9rem;
+}
+</style>

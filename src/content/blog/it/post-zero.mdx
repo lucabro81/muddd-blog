@@ -9,6 +9,8 @@ lang: it
 import TitleLined from "../../../components/TitleLined.astro";
 import "../../../styles/posts.css";
 import TableOfContents from "../../../components/TableOfContents.astro";
+import IconGithub from "../../../components/icons/IconGithub.astro";
+import IconLinkedin from "../../../components/icons/IconLinkedin.astro";
 
 <TableOfContents class="table-of-contents">
   <ul class="index-list">
@@ -81,13 +83,13 @@ che non si è mai concluso...
 </p>
 
 <p>
-  Un mondo che ricordi la battaglia di ieri descrivendo oggi le macerie fumanti
-  che ne sono testimonianza.
+  Un mondo testuale che ricordi la battaglia di ieri descrivendo oggi le macerie fumanti
+  che ne sono testimonianza, in modo unico, per ogni volta che questo accade.
 </p>
 
 <p>
   Una storia generata momento per momento, senza che il suo creatore l'abbia
-  prevista.
+  prevista nei suoi dettagli.
 </p>
 
 <p>
@@ -97,9 +99,7 @@ che non si è mai concluso...
 
 <p>
   Cosa succede se, invece di creare un mondo statico, lo facciamo evolvere nel
-  tempo? Cosa succede se prendiamo un LLM e gli facciamo generare un mondo,
-  delle interazioni, delle azioni, delle scelte, delle decisioni? Tutto in tempo
-  reale?
+  tempo? Se prendiamo un LLM e gli facciamo generare un mondo, delle interazioni, delle azioni, delle scelte e delle decisioni? Tutto in tempo reale?
 </p>
 
 <p>
@@ -111,7 +111,7 @@ che non si è mai concluso...
 <p>
   Tuttavia se prendiamo questo LLM, anche uno non particolarmente grande, e lo
   dotiamo di un training specifico, di un set di dati solido ed esaustivo da cui
-  attingere conoscenza e di un prompt ben ingegnerizzato, allora il risultato
+  attingere conoscenza, e di un prompt ben ingegnerizzato, allora il risultato
   cambia. Possiamo ottenere un <strong>Narratore</strong> . Un'entità che decide
   cosa raccontare, cosa mostrare, cosa nascondere, in modo coerente con il
   contesto, con le scelte fatte e con le azioni intraprese. Se due giocatori o
@@ -134,13 +134,9 @@ una brutta ferita che può guarire solo con cure adeguate, devi trovare un guari
 
 <p>
   Quando iniziai a giocare, a muovermi in questo tipo di mondo fatto di parole,
-  non è stato facile. I mondi virtuali, spesso in visuale isometrica, ma anche
-  alcuni che cominciavano ad implementare un 3d convincente, erano già lì.
-  Sollevavano dallo sforzo di dover immaginare tutto: si ammiravano, la risposta
-  era immediata, riempiva gli occhi. Meravigliosi, certo, ma per quanto vivi e
-  pulsanti, non era e non è possibile veramente <strong>viverli</strong>. Sono
-  rinchiusi o, meglio, posti su binari, che per quanto diversificati, sono
-  finiti, limitati.
+  non è stato facile. I mondi virtuali in 2d o 3d c'erano già, sollevavano dallo sforzo di dover immaginare tutto: si ammiravano, 
+  la risposta era ed è immediata, riempieno gli occhi. 
+  Meravigliosi, certo, ma per quanto vivi e pulsanti, per quanto pieni di possibilità, e capacità di reagire alle azion dell'utente, nella mia personale opinione ed esperienza, manca qualla granularità che rende unica ed in effetti irripetibile un certo istante.
 </p>
 
 <p>
@@ -152,8 +148,8 @@ una brutta ferita che può guarire solo con cure adeguate, devi trovare un guari
 <p>
   Ed è qui che la nostra idea torna in gioco. Se il Narratore IA che abbiamo
   costruito ci aiuta a ritagliare su misura un angolo di mondo in base a ciò che
-  è successo prima, quella fatica iniziale viene mitigata. Se tutto risponde in
-  modo sensato e non si avverte più il limite di un mondo statico, allora la
+  è successo prima e allo stato del mondo, quella fatica iniziale viene mitigata. Se tutto risponde in
+  modo sensato, non si avverte più il limite di un mondo statico e la
   fiducia del giocatore viene ripagata all'istante.
 </p>
 
@@ -183,9 +179,9 @@ una brutta ferita che può guarire solo con cure adeguate, devi trovare un guari
 </div>
 
 <p>
-  Dall'altro, l'ambizione di mondi persistenti come{" "}
+  Dall'altro, l'ambizione di mondi persistenti come 
   <a href="https://uo.com/" _target="_blank">Ultima Online</a>, dove le azioni dei giocatori
-  lasciavano cicatrici e creavano storie visibili a tutti.{" "}
+  lasciavano cicatrici e creavano storie visibili a tutti. 
   <strong>MUDDD</strong> non cerca di reinventare la ruota delle meccaniche, ma
   di prendere quel solido telaio e montargli un motore narrativo completamente
   nuovo, vivo e non prevedibile.
@@ -203,7 +199,7 @@ una brutta ferita che può guarire solo con cure adeguate, devi trovare un guari
 </p>
 
 <p>
-  Il nome più importante è senza dubbio{" "}
+  Uno di quelli che più ha attirato la mia attenzione è senza dubbio
   <a href="https://aidungeon.com/" _target="_blank">AI Dungeon</a>. È un progetto affascinante
   che offre una libertà quasi assoluta, permettendo al giocatore di fare
   letteralmente qualsiasi cosa in un'avventura a giocatore singolo generata al
@@ -293,12 +289,10 @@ una brutta ferita che può guarire solo con cure adeguate, devi trovare un guari
 
 <p>La domanda che potrebbe sorgere, e che mi sono fatto anch'io, è:</p>
 
-<p>"È davvero così necessario?"</p>
+<p>"Perchè?"</p>
 
 <p>
-  Accidenti, no! Certo che non è necessario, nulla è <strong>necessario</strong>
-  , nemmeno il pc da cui sto scrivendo! Non è questa la domanda giusta, quella
-  corretta è:
+  Ma che ne so :), forse la domanda più corretta è:
 </p>
 
 <p>"Perchè no?"</p>
@@ -311,6 +305,21 @@ una brutta ferita che può guarire solo con cure adeguate, devi trovare un guari
 
 <p>
   C'è spazio per tutti, e se volete accompagnarmi, per favore fatevi sentire.
+</p>
+
+<p class="social-links">
+  <a
+      class="social-links__item"
+      href="https://github.com/lucabro81"
+      target="_blank"
+      aria-label="GitHub"><IconGithub /></a
+  >
+  <a
+      class="social-links__item"
+      href="https://www.linkedin.com/in/lucabrognara/"
+      target="_blank"
+      aria-label="LinkedIn"><IconLinkedin /></a
+  >
 </p>
 
 <p>A Presto.</p>

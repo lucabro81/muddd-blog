@@ -1,13 +1,20 @@
+---
+import { useTranslations } from "../utils";
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const { currentLocale } = Astro;
+const t = await useTranslations(Astro.currentLocale);
+---
+
 <dialog id="cookie-banner" class="cookie-banner" position-="end" popover>
   <div box-="round" id="content" class="cookie-banner__content">
     <p>
-      This website uses cookies to enhance user experience and for language selection. 
-      By clicking "Accept", you consent to the use of cookies. For more details, please see our 
-      <a href="/privacy-policy">Privacy Policy</a>.
+      {t('cookie_banner.text')} 
+      <a href={getRelativeLocaleUrl(currentLocale ?? 'it', 'privacy-policy')}>{t('cookie_banner.privacy_link')}</a>.
     </p>
     <div id="buttons" class="cookie-banner__buttons">
-      <button id="refuse-cookies" box-="round" variant-="danger">Refuse</button>
-      <button id="accept-cookies" box-="round">Accept</button>
+      <button id="refuse-cookies" box-="round" variant-="danger">{t('cookie_banner.refuse')}</button>
+      <button id="accept-cookies" box-="round">{t('cookie_banner.accept')}</button>
     </div>
   </div>
 </dialog>

@@ -19,7 +19,7 @@ const allCategories = await getAllCategories(posts);
   </h3>
   <ul>
     {allCategories.map((category) => (
-      <li><PageLink href=`/posts/category/${category}`>{category}</PageLink></li>
+      <li><PageLink href=`/categories/${category}`>{category}</PageLink></li>
     ))}
   </ul>
 </aside> 

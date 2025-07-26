@@ -1,0 +1,105 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../../layouts/PageLayout.astro';
+import { getAllCategories, getPostUrl, useTranslations } from '../../../utils';
+import '../../../styles/posts.css';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  const categories = await getAllCategories(blogEntries);
+  
+  return categories.map((category: string) => ({
+    params: { category },
+    props: { category }
+  }));
+}
+
+const { category } = Astro.params;
+const { category: categoryProp } = Astro.props;
+
+const t = await useTranslations('en');
+
+const allPosts = await getCollection('blog');
+const categoryPosts = allPosts.filter(post => 
+  post.data.category.includes(category || categoryProp) && post.data.lang === 'en'
+);
+
+// Sort posts by date (newest first)
+const sortedPosts = categoryPosts.sort((a, b) => 
+  new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+);
+---
+
+<PageLayout title={`${t('page_titles.category')}: ${category || categoryProp}`}>
+      
+  {sortedPosts.length === 0 ? (
+    <p>No posts found in this category.</p>
+  ) : (
+    <ul class="posts-list">
+      {sortedPosts.map(post => (
+        <li>
+          <div>
+            <time datetime={post.data.pubDate}>
+              {new Date(post.data.pubDate).toLocaleDateString('en-us', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </time>
+            <h2><a href={getPostUrl(post)}>{post.data.title}</a></h2>
+            <em>{post.data.description}</em>
+            <div class="post-categories">
+              {post.data.category.map((cat: string) => (
+                <a href={`/en/categories/${cat}`} class="category-tag">
+                  {cat}
+                </a>
+              ))}
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  )}
+</PageLayout>
+
+<style>
+  
+  .container {
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  h1 {
+    margin-bottom: 2rem;
+    color: var(--text-color, #333);
+  }
+  
+  .post-categories {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .category-tag {
+    background: var(--tag-bg, #f5f5f5);
+    color: var(--tag-text, #666);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .category-tag:hover {
+    background: var(--tag-hover-bg, #e0e0e0);
+  }
+  
+  .back-link {
+    text-decoration: none;
+  }
+  
+  .back-link:hover {
+    text-decoration: underline;
+  }
+</style>
