@@ -66,8 +66,4 @@
   input {
     background-color: var(--background0);
   }
-
-  div[is-~="horizontal-menu"] {
-    margin-top: 0.5rem;
-  }
 }
