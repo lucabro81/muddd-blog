@@ -32,7 +32,6 @@ const t = await useTranslations(Astro.currentLocale);
 </div>
 
 <style>
-  @layer base {
     div[is-~="horizontal-menu"] ul {
       display: flex;
       flex-direction: row;
@@ -45,8 +44,6 @@ const t = await useTranslations(Astro.currentLocale);
       margin: 0;
       padding: 0;
     }
-  }
-  @layer components {
     ul li:before {
       content: "/";
       margin-right: 0;
@@ -58,7 +55,6 @@ const t = await useTranslations(Astro.currentLocale);
     li[is-~="right-end"] {
       margin-left: auto;
     }
-  }
 
   @media (max-width: 768px) {
     div[is-~="horizontal-menu"] {
