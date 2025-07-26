@@ -19,7 +19,7 @@ const t = await useTranslations(Astro.currentLocale);
     <!-- <li>
       <PageLink href={getRelativeLocaleUrl(currentLocale ?? 'it', 'milestones')}>{t('menu.milestones')}</PageLink>
     </li> -->
-    <li is-="right-end">
+    <li class="right-end">
       <ul>
         <li>
           <PageLink href={getRelativeLocaleUrl(currentLocale ?? 'it', 'ai-disclaimer')}>{t('menu.ai_disclaimer')}</PageLink>
@@ -52,7 +52,7 @@ const t = await useTranslations(Astro.currentLocale);
       content: "";
       margin: 0;
     }
-    li[is-~="right-end"] {
+    li.right-end {
       margin-left: auto;
     }
 
