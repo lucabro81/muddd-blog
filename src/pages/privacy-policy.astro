@@ -98,7 +98,7 @@ import TitleLined from "../components/TitleLined.astro";
         su questo sito.
     </p>
 
-    <h3>Cosa sono i cookie?</h3>
+    <h3 id="cookies">Cosa sono i cookie?</h3>
 
     <p>
         I cookie sono piccoli file di testo che i siti visitati dagli utenti
@@ -162,39 +162,51 @@ import TitleLined from "../components/TitleLined.astro";
 
     <p><em>Ultimo aggiornamento: 5 luglio 2025</em></p>
 
-    <script>
-        const user = "privacy";
-        const domain = "muddd.blog";
-        const emailContainer = document.getElementById(
-            "privacy-policy-email",
-        ) as HTMLAnchorElement;
-        emailContainer.href = `mailto:${user}@${domain}`;
-        emailContainer.textContent = `${user}@${domain}`;
-    </script>
-
-    <style>
-        h3 {
-            padding: 2rem 0 1rem 0;
-        }
-
-        table {
-            border: 1px solid white;
-            border-collapse: collapse;
-
-            margin-top: 1rem;
-
-
-            th {
-                padding: 0.5rem
-            }
-
-            td {
-                border: 1px solid white;
-                padding: 0.5rem;
-                &.age {
-                    text-wrap: nowrap;
-                }
-            }
-        }
-    </style>
 </PageLayout>
+
+<script>
+    const user = "privacy";
+    const domain = "muddd.blog";
+    const emailContainer = document.getElementById(
+        "privacy-policy-email",
+    ) as HTMLAnchorElement;
+    emailContainer.href = `mailto:${user}@${domain}`;
+    emailContainer.textContent = `${user}@${domain}`;
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const hashcode = window.location.hash;
+        console.log("hashcode", hashcode);
+        if (hashcode === "#cookies") {
+            const cookiesLink = document.getElementById("cookies");
+            if (cookiesLink) {
+                cookiesLink.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    });
+</script>
+
+<style>
+    h3 {
+        padding: 2rem 0 1rem 0;
+    }
+
+    table {
+        border: 1px solid white;
+        border-collapse: collapse;
+
+        margin-top: 1rem;
+
+
+        th {
+            padding: 0.5rem
+        }
+
+        td {
+            border: 1px solid white;
+            padding: 0.5rem;
+            &.age {
+                text-wrap: nowrap;
+            }
+        }
+    }
+</style>
