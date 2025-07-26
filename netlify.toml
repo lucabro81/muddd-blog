@@ -3,3 +3,11 @@
   
   # name of the function in netlify/edge_functions
   function = "language-redirect"
+
+[[plugins]]
+  package = "@algolia/netlify-plugin-crawler"
+  [plugins.inputs]
+  branches = ['main', 'search']
+  disabled = true
+  pathPrefix = "/"
+  renderJavaScript = true
