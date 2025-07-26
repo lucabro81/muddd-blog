@@ -7,7 +7,14 @@
     "build": "astro build",
     "preview": "astro preview",
     "clean": "rm -rf .astro dist",
-    "astro": "astro"
+    "astro": "astro",
+    "bump-version-major": "npm version --major",
+    "bump-version-minor": "npm version --minor",
+    "bump-version-patch": "npm version --patch",
+    "_commit-and-push-tag": "TAG=$(git describe --tags --abbrev=0) && git push && git push origin tag $TAG",
+    "release:patch": "npm run bump-version-patch && npm run _commit-and-push-tag",
+    "release:minor": "npm run bump-version-minor && npm run _commit-and-push-tag",
+    "release:major": "npm run bump-version-major && npm run _commit-and-push-tag"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
